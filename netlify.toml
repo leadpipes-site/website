@@ -1,0 +1,36 @@
+# Netlify settings for leadpipes.com.au
+[build]
+  command = "node build.js"
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Forms are handled by Netlify (data-netlify="true" in the HTML). The function in
+# netlify/functions/submission-created.js runs after each submission and forwards it to LeadDrive.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[redirects]]
+  from = "/lp"
+  to = "/lp/exclusive-leads/"
+  status = 302
+
+[[redirects]]
+  from = "/lp/"
+  to = "/lp/exclusive-leads/"
+  status = 302

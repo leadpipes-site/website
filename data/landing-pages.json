@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "exclusive-leads",
+    "category": "General / not sure yet",
+    "title": "Exclusive Lead Generation for Serious Operators | LeadPipes",
+    "description": "Exclusive, researched and qualified leads. One category, one state, one client. Check if your category is open.",
+    "eyebrow": "Exclusive lead generation",
+    "h1": "Your competitors do not get <span class=\"accent\">the same lead.</span>",
+    "lead": "LeadPipes researches your market, opens the conversation, qualifies the reply and hands you a decision-maker with the context to close. One category. One state. One client.",
+    "points": [
+      ["Exclusive", "The opportunity we create is yours. We do not resell it."],
+      ["Researched", "Each lead arrives with who they are, why they fit and why now."],
+      ["Qualified", "Scored against criteria we agree in writing before we start."]
+    ],
+    "button": "Check availability"
+  },
+  {
+    "slug": "commercial-solar",
+    "category": "Commercial solar and energy",
+    "title": "Exclusive Commercial Solar Leads | LeadPipes",
+    "description": "Qualified commercial solar and energy opportunities for installers who can close. One installer per state. Check if your state is open.",
+    "eyebrow": "Commercial solar and energy",
+    "h1": "Commercial solar leads. <span class=\"accent\">One installer per state.</span>",
+    "lead": "We find commercial and industrial sites with a real reason to act, reach the decision-maker, qualify the reply and hand it to you with the context to quote. Your competitors do not get the same lead.",
+    "points": [
+      ["Decision-makers", "Owners, directors and facilities leads, not general enquiries."],
+      ["A reason to call", "Why this site, why now, and the likely opportunity."],
+      ["Protected state", "While you are a client, we do not run the same offer for another installer in your state."]
+    ],
+    "button": "Check my state"
+  },
+  {
+    "slug": "kitchens-bathrooms-renovations",
+    "category": "Kitchens, bathrooms and renovations",
+    "title": "Exclusive Leads for Kitchen, Bathroom and Renovation Businesses | LeadPipes",
+    "description": "Qualified, exclusive opportunities for premium kitchen, bathroom and renovation businesses. One category per area. Check availability.",
+    "eyebrow": "Kitchens, bathrooms and renovations",
+    "h1": "Premium renovation leads. <span class=\"accent\">Not shared leads.</span>",
+    "lead": "For renovation businesses where one good job changes the month. We research and qualify homeowners and developers with a real project, then hand you the conversation history and the next move.",
+    "points": [
+      ["Real projects", "Qualified against budget, timing and decision-maker, not just interest."],
+      ["Exclusive to you", "No competitor gets the same lead in your category and territory."],
+      ["Fast handover", "Contact details, evidence and notes, ready for your first call."]
+    ],
+    "button": "Check availability"
+  },
+  {
+    "slug": "commercial-fitout-construction",
+    "category": "Commercial fit-out and construction",
+    "title": "Exclusive Leads for Commercial Fit-out and Construction | LeadPipes",
+    "description": "Qualified project opportunities for commercial fit-out, construction and trade contractors. One contractor per category and state.",
+    "eyebrow": "Commercial fit-out and construction",
+    "h1": "Project opportunities. <span class=\"accent\">Before the tender list.</span>",
+    "lead": "We find businesses with a commercial trigger, such as a move, expansion or new site, and reach the person who decides. You get a qualified conversation, not a list of names.",
+    "points": [
+      ["Commercial triggers", "Expansion, relocation, new premises and refurbishment signals."],
+      ["Right person", "Directors, property and operations leads."],
+      ["Clean handover", "Scored, evidenced and with the conversation so far."]
+    ],
+    "button": "Check availability"
+  },
+  {
+    "slug": "b2b-services",
+    "category": "B2B and professional services",
+    "title": "Exclusive Leads for B2B and Professional Services | LeadPipes",
+    "description": "Qualified decision-maker conversations for B2B and professional services firms. One firm per category and state.",
+    "eyebrow": "B2B and professional services",
+    "h1": "Decision-maker conversations. <span class=\"accent\">One firm per category.</span>",
+    "lead": "For firms where a single new client is worth the effort. We research the account, open the conversation with context, qualify the reply and hand it over so your first call is informed.",
+    "points": [
+      ["Account research", "What they do, what has changed, and why your offer is relevant."],
+      ["Qualified replies", "Interest is scored against agreed criteria before you see it."],
+      ["One firm", "We do not sell the same opportunity to your competitor."]
+    ],
+    "button": "Check availability"
+  }
+]
