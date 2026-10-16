@@ -40,18 +40,18 @@ The lead also records the page the form was on (`landing_page`), the website tha
 | Page | Use it for |
 |---|---|
 | `/` | The main site and organic traffic |
-| `/apply.html` | Direct "check availability" requests |
+| `/apply.html` | Direct "apply for a territory" requests |
 | `/lp/exclusive-leads/` | General paid traffic, category unknown |
 | `/lp/commercial-solar/` | Solar and energy installers |
 | `/lp/kitchens-bathrooms-renovations/` | Renovation businesses |
 | `/lp/commercial-fitout-construction/` | Fit-out, construction, trades |
 | `/lp/b2b-services/` | B2B and professional services |
 
-`/lp/` pages are marked noindex so paid traffic does not compete with the main site in Google, and they are left out of the sitemap.
+The solar, fit-out and B2B pages are indexable and in the sitemap. `/lp/exclusive-leads/` and `/lp/kitchens-bathrooms-renovations/` are noindex and left out of the sitemap (the kitchens page is held back until legal review, so do not run outbound or paid traffic to it yet). robots.txt does not block any page, so noindex is respected.
 
 ## Adding a new landing page
 
-1. Add an entry to `data/landing-pages.json` (copy an existing one).
+1. Add an entry to `data/landing-pages.json` (copy an existing one). Set `indexable` to false to keep it out of search and the sitemap.
 2. Run `npm run build`.
 3. Commit the changes. Netlify publishes it.
 

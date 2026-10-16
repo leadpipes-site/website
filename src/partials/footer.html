@@ -1,15 +1,22 @@
+<!-- PLACEHOLDER: registered entity name and ABN are not yet supplied. Set entityName and abn in data/site.json and they appear in this footer. [entity name to be supplied] [ABN to be supplied] -->
 <footer>
   <div class="wrap">
     <div class="foot">
       <div>
         <div class="tag">Built by champions.<span class="accent">Engineered to win.</span></div>
-        <p>LeadPipes provides researched and qualified sales opportunities. Client outcomes depend on market conditions, offer, response speed, sales execution and delivery.</p>
+        <p>LeadPipes provides researched and qualified sales opportunities. We do not guarantee sales or any particular result. Client outcomes depend on market conditions, offer, response speed, sales execution and delivery. Performance figures on this site are targets, not guarantees or reported results.</p>
       </div>
       <div>
         <p><b>LeadPipes &middot; Australia</b></p>
-        <p><a href="/apply.html">Check availability</a></p>
-        <p><a href="mailto:hello@leadpipes.com.au">hello@leadpipes.com.au</a></p>
+{{entityLines}}        <p><a href="mailto:{{email}}">{{email}}</a></p>
+        <p><a href="/book.html">Book a discovery call</a></p>
+        <p><a href="/apply.html">Apply for a territory</a></p>
         <p><a href="/privacy.html">Privacy policy</a></p>
+      </div>
+      <div>
+        <p><b>Who we work with</b></p>
+{{footerCategories}}        <p><a href="/how-it-works.html">How it works</a></p>
+        <p><a href="/faq.html">FAQ</a></p>
       </div>
     </div>
     <div class="legal">&copy; LeadPipes &middot; leadpipes.com.au</div>

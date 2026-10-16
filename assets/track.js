@@ -72,15 +72,25 @@
     var forms = document.querySelectorAll('form[data-lead-form]');
     Array.prototype.forEach.call(forms, function (form) {
       fill(form);
+      // Spam time-trap: record when the form was shown, and how long it was open at submit. Both are checked server-side.
+      var shownAt = Date.now();
+      if (form.elements['form_ts']) form.elements['form_ts'].value = String(shownAt);
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn ? btn.textContent : '';
+      function restore() { if (btn) { btn.disabled = false; btn.textContent = label; } }
       form.addEventListener('submit', function () {
         fill(form);
-        var btn = form.querySelector('button[type="submit"]');
+        if (form.elements['form_elapsed']) form.elements['form_elapsed'].value = String(Date.now() - shownAt);
         if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+        // If the network drops and the page never navigates, give the button back so the person can try again.
+        setTimeout(restore, 15000);
       });
+      // Back/forward cache: the page can come back with the button still disabled.
+      window.addEventListener('pageshow', restore);
     });
-    // Keep tags on internal links so the apply page still knows where the visitor came from (same-visit storage already does this; links are a fallback for blocked storage).
+    // Keep tags on internal links so the apply and book pages still know where the visitor came from (same-visit storage already does this; links are a fallback for blocked storage).
     if (hasTags) {
-      Array.prototype.forEach.call(document.querySelectorAll('a[href^="/apply"]'), function (a) {
+      Array.prototype.forEach.call(document.querySelectorAll('a[href^="/apply"],a[href^="/book"]'), function (a) {
         var url = new URL(a.getAttribute('href'), location.origin);
         KEYS.forEach(function (k) { if (current[k] && !url.searchParams.get(k)) url.searchParams.set(k, current[k]); });
         a.setAttribute('href', url.pathname + url.search);

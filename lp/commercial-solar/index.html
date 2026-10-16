@@ -3,18 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Exclusive Commercial Solar Leads | LeadPipes</title>
-<meta name="description" content="Qualified commercial solar and energy opportunities for installers who can close. One installer per state. Check if your state is open.">
-<meta name="robots" content="noindex,follow">
+<title>Commercial Solar and Energy Lead Generation for Installers | LeadPipes</title>
+<meta name="description" content="Qualified commercial and industrial solar opportunities for installers who can quote and close. Exclusivity is agreed per category, state and client.">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://leadpipes.com.au/lp/commercial-solar/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="LeadPipes">
-<meta property="og:title" content="Exclusive Commercial Solar Leads | LeadPipes">
-<meta property="og:description" content="Qualified commercial solar and energy opportunities for installers who can close. One installer per state. Check if your state is open.">
+<meta property="og:title" content="Commercial Solar and Energy Lead Generation for Installers | LeadPipes">
+<meta property="og:description" content="Qualified commercial and industrial solar opportunities for installers who can quote and close. Exclusivity is agreed per category, state and client.">
 <meta property="og:url" content="https://leadpipes.com.au/lp/commercial-solar/">
+<meta property="og:image" content="https://leadpipes.com.au/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LeadPipes. Exclusive, researched and qualified leads. One category, one state, one client.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Commercial Solar and Energy Lead Generation for Installers | LeadPipes">
+<meta name="twitter:description" content="Qualified commercial and industrial solar opportunities for installers who can quote and close. Exclusivity is agreed per category, state and client.">
+<meta name="twitter:image" content="https://leadpipes.com.au/assets/og-image.png">
 <meta name="theme-color" content="#071b2b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://leadpipes.com.au/"},{"@type":"ListItem","position":2,"name":"Commercial solar and energy","item":"https://leadpipes.com.au/lp/commercial-solar/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -25,10 +35,10 @@
       <span><b>LEADPIPES</b><small>Exclusive lead intelligence</small></span>
     </a>
     <nav aria-label="Main">
-      <a href="/#difference">The difference</a>
-      <a href="/#process">How it works</a>
-      <a href="/#fit">Who it is for</a>
-      <a class="pill" href="/apply.html">Check availability <span aria-hidden="true">&#8599;</span></a>
+      <a href="/how-it-works.html">How it works</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/apply.html">Apply for a territory</a>
+      <a class="pill" href="/book.html">Book a discovery call <span aria-hidden="true">&#8599;</span></a>
     </nav>
   </div>
 </header>
@@ -37,14 +47,16 @@
 <section class="dark">
   <div class="wrap lp-hero">
     <div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Commercial solar and energy</span></nav>
       <p class="eyebrow">Commercial solar and energy</p>
-      <h1>Commercial solar leads. <span class="accent">One installer per state.</span></h1>
-      <p class="lead">We find commercial and industrial sites with a real reason to act, reach the decision-maker, qualify the reply and hand it to you with the context to quote. Your competitors do not get the same lead.</p>
+      <h1>Commercial solar leads. <span class="accent">Exclusive by state.</span></h1>
+      <p class="lead">We find commercial and industrial businesses with a real reason to act, reach the decision-maker, qualify the reply and hand it to you with the context to quote.</p>
+      <div class="cta-row"><a class="btn" href="/book.html">Book a discovery call</a><a class="btn ghost" href="#enquire">Apply for a territory</a></div>
       <div class="assure"><span>One category</span><span>One state</span><span>One client</span></div>
     </div>
     <div class="form-card" id="enquire">
-      <h3>Check my state</h3>
-      <p class="sub">If your category and state are open, Darren calls you personally.</p>
+      <h2 class="form-title">Apply for a territory</h2>
+      <p class="sub">Seven short questions. If your category and state are open, Darren replies personally.</p>
       <form name="lp-enquiry" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" data-lead-form>
       <input type="hidden" name="form-name" value="lp-enquiry">
       <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -59,34 +71,42 @@
       <input type="hidden" name="referrer" value="">
       <input type="hidden" name="landing_page" value="">
       <input type="hidden" name="first_touch_at" value="">
+      <input type="hidden" name="form_ts" value="">
+      <input type="hidden" name="form_elapsed" value="">
       <div class="f2">
-        <label>Your name<input name="name" required autocomplete="name"></label>
-        <label>Business name<input name="business" required autocomplete="organization"></label>
+        <label>Your name<input name="name" required autocomplete="name" data-error="Enter your name so we know who to speak to."></label>
+        <label>Business name<input name="business" required autocomplete="organization" data-error="Enter the name of your business."></label>
       </div>
       <div class="f2">
-        <label>Email<input type="email" name="email" required autocomplete="email"></label>
-        <label>Mobile<input type="tel" name="phone" required autocomplete="tel"></label>
+        <label>Work email<input type="email" name="email" required autocomplete="email" data-error="Enter an email address we can reply to, for example name@yourbusiness.com.au."></label>
+        <label>Website<input type="text" inputmode="url" name="website" required placeholder="yourbusiness.com.au" autocomplete="url" data-error="Enter your website address, or type none if you do not have one."></label>
       </div>
       <div class="f2">
-        <label>Website<input type="text" inputmode="url" name="website" placeholder="yourbusiness.com.au" autocomplete="url"></label>
         <label>State
-          <select name="state" required>
+          <select name="state" required data-error="Choose the state you operate in, or National.">
             <option value="">Choose one</option>
             <option>WA</option><option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option><option>TAS</option><option>NT</option><option>ACT</option><option>National</option>
           </select>
         </label>
+        <input type="hidden" name="category" value="Commercial solar and energy">
       </div>
-      <input type="hidden" name="category" value="Commercial solar and energy">
-      <label>Average sale value (AUD)
-        <select name="avg_sale" required>
-          <option value="">Choose one</option>
-          <option>Under $10,000</option><option>$10,000 to $30,000</option><option>$30,000 to $100,000</option><option>Over $100,000</option>
-        </select>
-      </label>
-      <label>What would growth look like for you?<textarea name="goal" maxlength="600" placeholder="Optional. Where you sell, who you sell to, what a good year looks like."></textarea></label>
-      <label class="check"><input type="checkbox" name="consent" required><span>I agree to LeadPipes contacting me by email, phone or SMS about this enquiry. I can opt out at any time. See the <a href="/privacy.html">privacy policy</a>.</span></label>
-      <button class="btn" type="submit">Check my state</button>
-      <p class="small-print">We reply personally. We do not sell or share your details.</p>
+      <label>What do you want from LeadPipes?<textarea name="goal" required maxlength="600" data-error="Tell us in a sentence or two what you are looking for." placeholder="For example: more qualified conversations with commercial buyers in WA."></textarea></label>
+      <label>Phone <span class="opt">(optional)</span><input type="tel" name="phone" autocomplete="tel" placeholder="Only if you would like a call"></label>
+      <details class="more">
+        <summary>Tell us more (optional)</summary>
+        <div class="more-body">
+          <p class="small-print">Skip this if you like. It helps us prepare for the discovery call.</p>
+          <label>Average sale value (AUD)
+            <select name="avg_sale">
+              <option value="">Choose one</option>
+              <option>Under $10,000</option><option>$10,000 to $30,000</option><option>$30,000 to $100,000</option><option>Over $100,000</option>
+            </select>
+          </label>
+        </div>
+      </details>
+      <label class="check"><input type="checkbox" name="consent" required data-error="Please tick the box so we can contact you about this enquiry."><span>I agree that LeadPipes may contact me by email, phone or SMS about this enquiry and our discovery call. I can opt out at any time. See the <a href="/privacy.html">privacy policy</a>.</span></label>
+      <button class="btn" type="submit">Apply for a territory</button>
+      <p class="small-print">Collection notice: LeadPipes collects these details to respond to your enquiry and assess whether we can work together. We do not sell them or pass them to other clients. We use service providers to host and store them, and some may process data outside Australia. How we handle personal information, and how to ask for access, correction or removal: <a href="/privacy.html">privacy policy</a>.</p>
     </form>
     </div>
   </div>
@@ -95,13 +115,29 @@
   <div class="wrap">
     <p class="eyebrow">What you get</p>
     <h2>Fewer leads.<br>Better conversations.</h2>
-    <div class="pillars"><div class="pillar"><small>Decision-makers</small><p>Owners, directors and facilities leads, not general enquiries.</p></div><div class="pillar"><small>A reason to call</small><p>Why this site, why now, and the likely opportunity.</p></div><div class="pillar"><small>Protected state</small><p>While you are a client, we do not run the same offer for another installer in your state.</p></div></div>
+    <div class="pillars"><div class="pillar"><small>Decision-makers</small><p>Owners, directors and facilities leads, not general enquiries.</p></div><div class="pillar"><small>A reason to call</small><p>Why this business, why now, and the likely opportunity.</p></div><div class="pillar"><small>Exclusive by state</small><p>Exclusivity is agreed in writing per category, state and client. While you are a client, we do not hand the opportunities we create in your state to another LeadPipes client.</p></div></div>
+    <p class="define">See exactly what is in a handover on <a href="/how-it-works.html">How it works</a>, and read the <a href="/faq.html">FAQ</a>.</p>
+  </div>
+</section>
+<section class="white">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">Commercial solar and energy</p>
+      <h2>How it works for you.</h2>
+      <p>Commercial solar is a considered purchase. The person who signs off is rarely the person who answers the general enquiries line, and a quote only moves forward when the timing, the site and the budget line up.</p>
+      <p>LeadPipes does the front end of that work for you: researching which businesses are worth approaching, opening a business-to-business conversation with the right person, and qualifying the reply before you see it. Your team then owns the site assessment, the proposal, the close and the delivery.</p>
+    </div>
+    <div class="box-list">
+      <h3>What we look for</h3>
+      <ul class="ticks"><li>Commercial and industrial businesses that fit the sites and project sizes you want to quote</li><li>The person who decides or influences the spend: owner, director, facilities or operations lead</li><li>A reason to talk now, with evidence we can show you</li><li>Criteria that you and we agree in writing before we start</li></ul>
+      <p class="define">Disclosure: Darren Harry also operates SolarPipe, a separate commercial solar brokerage. Exclusivity under a LeadPipes agreement applies to the opportunities LeadPipes generates for you in your agreed category and state. We will explain on the discovery call how the two businesses relate, before you decide anything.</p>
+    </div>
   </div>
 </section>
 <section class="white">
   <div class="wrap founder">
     <p>We want serious operators: businesses where one good sale matters, with a team that responds fast and can close. <b>We do not guarantee sales.</b> We commit to researched, qualified, exclusive opportunities.</p>
-    <a class="btn" href="#enquire">Check my state</a>
+    <a class="btn" href="/book.html">Book a discovery call</a>
   </div>
 </section>
 </main>
@@ -110,13 +146,22 @@
     <div class="foot">
       <div>
         <div class="tag">Built by champions.<span class="accent">Engineered to win.</span></div>
-        <p>LeadPipes provides researched and qualified sales opportunities. Client outcomes depend on market conditions, offer, response speed, sales execution and delivery.</p>
+        <p>LeadPipes provides researched and qualified sales opportunities. We do not guarantee sales or any particular result. Client outcomes depend on market conditions, offer, response speed, sales execution and delivery. Performance figures on this site are targets, not guarantees or reported results.</p>
       </div>
       <div>
         <p><b>LeadPipes &middot; Australia</b></p>
-        <p><a href="/apply.html">Check availability</a></p>
-        <p><a href="mailto:hello@leadpipes.com.au">hello@leadpipes.com.au</a></p>
+        <p><a href="mailto:enquiries@leadpipes.com.au">enquiries@leadpipes.com.au</a></p>
+        <p><a href="/book.html">Book a discovery call</a></p>
+        <p><a href="/apply.html">Apply for a territory</a></p>
         <p><a href="/privacy.html">Privacy policy</a></p>
+      </div>
+      <div>
+        <p><b>Who we work with</b></p>
+        <p><a href="/lp/commercial-solar/">Commercial solar and energy</a></p>
+        <p><a href="/lp/commercial-fitout-construction/">Commercial fit-out and construction</a></p>
+        <p><a href="/lp/b2b-services/">B2B and professional services</a></p>
+        <p><a href="/how-it-works.html">How it works</a></p>
+        <p><a href="/faq.html">FAQ</a></p>
       </div>
     </div>
     <div class="legal">&copy; LeadPipes &middot; leadpipes.com.au</div>
@@ -124,5 +169,6 @@
 </footer>
 
 <script src="/assets/track.js"></script>
+<script src="/assets/form.js"></script>
 </body>
 </html>

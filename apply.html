@@ -3,18 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Check Availability | LeadPipes</title>
-<meta name="description" content="Tell us what you sell, where, and what a genuine opportunity is worth. If your category and state are open and the fit is strong, Darren calls you personally.">
+<title>Apply for a Territory | LeadPipes</title>
+<meta name="description" content="Tell us what you sell, where, and what you want from LeadPipes. If your category and state are open and the fit is strong, Darren replies personally.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://leadpipes.com.au/apply.html">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="LeadPipes">
-<meta property="og:title" content="Check Availability | LeadPipes">
-<meta property="og:description" content="Tell us what you sell, where, and what a genuine opportunity is worth. If your category and state are open and the fit is strong, Darren calls you personally.">
+<meta property="og:title" content="Apply for a Territory | LeadPipes">
+<meta property="og:description" content="Tell us what you sell, where, and what you want from LeadPipes. If your category and state are open and the fit is strong, Darren replies personally.">
 <meta property="og:url" content="https://leadpipes.com.au/apply.html">
+<meta property="og:image" content="https://leadpipes.com.au/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LeadPipes. Exclusive, researched and qualified leads. One category, one state, one client.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apply for a Territory | LeadPipes">
+<meta name="twitter:description" content="Tell us what you sell, where, and what you want from LeadPipes. If your category and state are open and the fit is strong, Darren replies personally.">
+<meta name="twitter:image" content="https://leadpipes.com.au/assets/og-image.png">
 <meta name="theme-color" content="#071b2b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://leadpipes.com.au/"},{"@type":"ListItem","position":2,"name":"Apply for a territory","item":"https://leadpipes.com.au/apply.html"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -25,10 +35,10 @@
       <span><b>LEADPIPES</b><small>Exclusive lead intelligence</small></span>
     </a>
     <nav aria-label="Main">
-      <a href="/#difference">The difference</a>
-      <a href="/#process">How it works</a>
-      <a href="/#fit">Who it is for</a>
-      <a class="pill" href="/apply.html">Check availability <span aria-hidden="true">&#8599;</span></a>
+      <a href="/how-it-works.html">How it works</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/apply.html">Apply for a territory</a>
+      <a class="pill" href="/book.html">Book a discovery call <span aria-hidden="true">&#8599;</span></a>
     </nav>
   </div>
 </header>
@@ -37,14 +47,15 @@
 <section class="dark">
   <div class="wrap lp-hero">
     <div>
-      <p class="eyebrow">Check availability</p>
+      <p class="eyebrow">Apply for a territory</p>
       <h1>Take the <span class="accent">territory.</span></h1>
-      <p class="lead">We take a limited number of clients so each one gets proper attention. If your category and state are open and the commercial fit is strong, Darren calls you personally.</p>
+      <p class="lead">We take a limited number of clients so each one gets proper attention. If your category and state are open and the commercial fit is strong, Darren replies personally.</p>
       <div class="assure"><span>One category</span><span>One state</span><span>One client</span></div>
+      <p class="side-link"><a class="textlink" href="/book.html">Prefer to talk first? Book a discovery call</a></p>
     </div>
     <div class="form-card">
-      <h3>Apply for exclusivity</h3>
-      <p class="sub">Takes about three minutes. You can book a discovery call straight after.</p>
+      <h2 class="form-title">Apply for a territory</h2>
+      <p class="sub">Seven short questions. Everything else is optional.</p>
       <form name="apply" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" data-lead-form>
       <input type="hidden" name="form-name" value="apply">
       <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -59,88 +70,96 @@
       <input type="hidden" name="referrer" value="">
       <input type="hidden" name="landing_page" value="">
       <input type="hidden" name="first_touch_at" value="">
+      <input type="hidden" name="form_ts" value="">
+      <input type="hidden" name="form_elapsed" value="">
       <div class="f2">
-        <label>Your name<input name="name" required autocomplete="name"></label>
-        <label>Business name<input name="business" required autocomplete="organization"></label>
+        <label>Your name<input name="name" required autocomplete="name" data-error="Enter your name so we know who to speak to."></label>
+        <label>Business name<input name="business" required autocomplete="organization" data-error="Enter the name of your business."></label>
       </div>
       <div class="f2">
-        <label>Email<input type="email" name="email" required autocomplete="email"></label>
-        <label>Mobile<input type="tel" name="phone" required autocomplete="tel"></label>
+        <label>Work email<input type="email" name="email" required autocomplete="email" data-error="Enter an email address we can reply to, for example name@yourbusiness.com.au."></label>
+        <label>Website<input type="text" inputmode="url" name="website" required placeholder="yourbusiness.com.au" autocomplete="url" data-error="Enter your website address, or type none if you do not have one."></label>
       </div>
       <div class="f2">
-        <label>Website<input type="text" inputmode="url" name="website" placeholder="yourbusiness.com.au" autocomplete="url"></label>
+        <label>Business category
+          <select name="category" required data-error="Choose the category that best describes your business.">
+            <option value="">Choose one</option>
+            <option>Commercial solar and energy</option><option>Kitchens, bathrooms and renovations</option><option>Commercial fit-out and construction</option><option>B2B and professional services</option><option>Other</option>
+          </select>
+        </label>
         <label>State
-          <select name="state" required>
+          <select name="state" required data-error="Choose the state you operate in, or National.">
             <option value="">Choose one</option>
             <option>WA</option><option>NSW</option><option>VIC</option><option>QLD</option><option>SA</option><option>TAS</option><option>NT</option><option>ACT</option><option>National</option>
           </select>
         </label>
       </div>
-      <label>Business category
-        <select name="category" required>
-          <option value="">Choose one</option>
-          <option>Commercial solar and energy</option><option>Kitchens, bathrooms and renovations</option><option>Commercial fit-out and construction</option><option>B2B and professional services</option><option>Other</option>
-        </select>
-      </label>
-      <label>Average sale value (AUD)
-        <select name="avg_sale" required>
-          <option value="">Choose one</option>
-          <option>Under $10,000</option><option>$10,000 to $30,000</option><option>$30,000 to $100,000</option><option>Over $100,000</option>
-        </select>
-      </label>
-      <div class="f2">
-        <label>Your role
-          <select name="role" required>
-            <option value="">Choose one</option>
-            <option>Owner or director</option><option>Sales or business development</option><option>Marketing</option><option>General manager</option><option>Other</option>
-          </select>
-        </label>
-        <label>Team size
-          <select name="team_size" required>
-            <option value="">Choose one</option>
-            <option>Just me</option><option>2 to 5</option><option>6 to 20</option><option>21 to 50</option><option>Over 50</option>
-          </select>
-        </label>
-      </div>
-      <div class="f2">
-        <label>Years trading
-          <select name="years_trading" required>
-            <option value="">Choose one</option>
-            <option>Under 2</option><option>2 to 5</option><option>6 to 10</option><option>Over 10</option>
-          </select>
-        </label>
-        <label>Monthly marketing spend (AUD)
-          <select name="marketing_spend" required>
-            <option value="">Choose one</option>
-            <option>Nothing yet</option><option>Under $2,000</option><option>$2,000 to $5,000</option><option>$5,000 to $15,000</option><option>Over $15,000</option>
-          </select>
-        </label>
-      </div>
-      <label>Opportunities you want per month
-        <select name="leads_wanted" required>
-          <option value="">Choose one</option>
-          <option>1 to 5</option><option>6 to 15</option><option>16 to 30</option><option>More than 30</option>
-        </select>
-      </label>
-      <fieldset class="checks">
-        <legend>Where your leads come from today (tick any)</legend>
-        <label class="check"><input type="checkbox" name="sources" value="Referrals"><span>Referrals</span></label>
-        <label class="check"><input type="checkbox" name="sources" value="Google or SEO"><span>Google or SEO</span></label>
-        <label class="check"><input type="checkbox" name="sources" value="Paid ads"><span>Paid ads</span></label>
-        <label class="check"><input type="checkbox" name="sources" value="Lead marketplaces"><span>Lead marketplaces</span></label>
-        <label class="check"><input type="checkbox" name="sources" value="Outbound"><span>Outbound</span></label>
-        <label class="check"><input type="checkbox" name="sources" value="Not much at the moment"><span>Not much at the moment</span></label>
-      </fieldset>
-      <label>Best time for a discovery call
-        <select name="call_window">
-          <option value="">No preference</option>
-          <option>Morning (Perth time)</option><option>Afternoon (Perth time)</option><option>Evening (Perth time)</option>
-        </select>
-      </label>
-      <label>What would growth look like for you?<textarea name="goal" maxlength="600" placeholder="Optional. Where you sell, who you sell to, what a good year looks like."></textarea></label>
-      <label class="check"><input type="checkbox" name="consent" required><span>I agree to LeadPipes contacting me by email, phone or SMS about this enquiry. I can opt out at any time. See the <a href="/privacy.html">privacy policy</a>.</span></label>
-      <button class="btn" type="submit">Request availability</button>
-      <p class="small-print">We reply personally. We do not sell or share your details.</p>
+      <label>What do you want from LeadPipes?<textarea name="goal" required maxlength="600" data-error="Tell us in a sentence or two what you are looking for." placeholder="For example: more qualified conversations with commercial buyers in WA."></textarea></label>
+      <label>Phone <span class="opt">(optional)</span><input type="tel" name="phone" autocomplete="tel" placeholder="Only if you would like a call"></label>
+      <details class="more">
+        <summary>Tell us more (optional)</summary>
+        <div class="more-body">
+          <p class="small-print">Skip this if you like. It helps us prepare for the discovery call.</p>
+          <label>Average sale value (AUD)
+            <select name="avg_sale">
+              <option value="">Choose one</option>
+              <option>Under $10,000</option><option>$10,000 to $30,000</option><option>$30,000 to $100,000</option><option>Over $100,000</option>
+            </select>
+          </label>
+          <div class="f2">
+            <label>Your role
+              <select name="role">
+                <option value="">Choose one</option>
+                <option>Owner or director</option><option>Sales or business development</option><option>Marketing</option><option>General manager</option><option>Other</option>
+              </select>
+            </label>
+            <label>Team size
+              <select name="team_size">
+                <option value="">Choose one</option>
+                <option>Just me</option><option>2 to 5</option><option>6 to 20</option><option>21 to 50</option><option>Over 50</option>
+              </select>
+            </label>
+          </div>
+          <div class="f2">
+            <label>Years trading
+              <select name="years_trading">
+                <option value="">Choose one</option>
+                <option>Under 2</option><option>2 to 5</option><option>6 to 10</option><option>Over 10</option>
+              </select>
+            </label>
+            <label>Monthly marketing spend (AUD)
+              <select name="marketing_spend">
+                <option value="">Choose one</option>
+                <option>Nothing yet</option><option>Under $2,000</option><option>$2,000 to $5,000</option><option>$5,000 to $15,000</option><option>Over $15,000</option>
+              </select>
+            </label>
+          </div>
+          <label>Opportunities you want per month
+            <select name="leads_wanted">
+              <option value="">Choose one</option>
+              <option>1 to 5</option><option>6 to 15</option><option>16 to 30</option><option>More than 30</option>
+            </select>
+          </label>
+          <fieldset class="checks">
+            <legend>Where your leads come from today (tick any)</legend>
+            <label class="check"><input type="checkbox" name="sources" value="Referrals"><span>Referrals</span></label>
+            <label class="check"><input type="checkbox" name="sources" value="Google or SEO"><span>Google or SEO</span></label>
+            <label class="check"><input type="checkbox" name="sources" value="Paid ads"><span>Paid ads</span></label>
+            <label class="check"><input type="checkbox" name="sources" value="Lead marketplaces"><span>Lead marketplaces</span></label>
+            <label class="check"><input type="checkbox" name="sources" value="Outbound"><span>Outbound</span></label>
+            <label class="check"><input type="checkbox" name="sources" value="Not much at the moment"><span>Not much at the moment</span></label>
+          </fieldset>
+          <label>Best time for a discovery call
+            <select name="call_window">
+              <option value="">No preference</option>
+              <option>Morning (Perth time)</option><option>Afternoon (Perth time)</option><option>Evening (Perth time)</option>
+            </select>
+          </label>
+        </div>
+      </details>
+      <label class="check"><input type="checkbox" name="consent" required data-error="Please tick the box so we can contact you about this enquiry."><span>I agree that LeadPipes may contact me by email, phone or SMS about this enquiry and our discovery call. I can opt out at any time. See the <a href="/privacy.html">privacy policy</a>.</span></label>
+      <button class="btn" type="submit">Apply for a territory</button>
+      <p class="small-print">Collection notice: LeadPipes collects these details to respond to your enquiry and assess whether we can work together. We do not sell them or pass them to other clients. We use service providers to host and store them, and some may process data outside Australia. How we handle personal information, and how to ask for access, correction or removal: <a href="/privacy.html">privacy policy</a>.</p>
     </form>
     </div>
   </div>
@@ -151,13 +170,22 @@
     <div class="foot">
       <div>
         <div class="tag">Built by champions.<span class="accent">Engineered to win.</span></div>
-        <p>LeadPipes provides researched and qualified sales opportunities. Client outcomes depend on market conditions, offer, response speed, sales execution and delivery.</p>
+        <p>LeadPipes provides researched and qualified sales opportunities. We do not guarantee sales or any particular result. Client outcomes depend on market conditions, offer, response speed, sales execution and delivery. Performance figures on this site are targets, not guarantees or reported results.</p>
       </div>
       <div>
         <p><b>LeadPipes &middot; Australia</b></p>
-        <p><a href="/apply.html">Check availability</a></p>
-        <p><a href="mailto:hello@leadpipes.com.au">hello@leadpipes.com.au</a></p>
+        <p><a href="mailto:enquiries@leadpipes.com.au">enquiries@leadpipes.com.au</a></p>
+        <p><a href="/book.html">Book a discovery call</a></p>
+        <p><a href="/apply.html">Apply for a territory</a></p>
         <p><a href="/privacy.html">Privacy policy</a></p>
+      </div>
+      <div>
+        <p><b>Who we work with</b></p>
+        <p><a href="/lp/commercial-solar/">Commercial solar and energy</a></p>
+        <p><a href="/lp/commercial-fitout-construction/">Commercial fit-out and construction</a></p>
+        <p><a href="/lp/b2b-services/">B2B and professional services</a></p>
+        <p><a href="/how-it-works.html">How it works</a></p>
+        <p><a href="/faq.html">FAQ</a></p>
       </div>
     </div>
     <div class="legal">&copy; LeadPipes &middot; leadpipes.com.au</div>
@@ -165,5 +193,6 @@
 </footer>
 
 <script src="/assets/track.js"></script>
+<script src="/assets/form.js"></script>
 </body>
 </html>

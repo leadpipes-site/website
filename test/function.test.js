@@ -61,3 +61,49 @@ test('reports a failure (502) when LeadDrive rejects or is down', async () => {
   await m.close();
   await withEnv({ LEADDRIVE_URL: 'http://127.0.0.1:9', LEADDRIVE_API_KEY: 'k' }, async () => { assert.equal((await fn.handler(submission(sample))).statusCode, 502); });
 });
+
+test('role, phone, website, state and vertical are passed as top-level LeadDrive fields', () => {
+  const p = fn.buildPayload({ ...sample, role: 'Owner or director' }, 'apply');
+  assert.equal(p.role, 'Owner or director'); assert.equal(p.phone, '0400 000 000'); assert.equal(p.website, 'fitouts.com.au');
+  assert.equal(p.state, 'WA'); assert.equal(p.vertical, 'Commercial fit-out and construction');
+  assert.match(p.message, /Role: Owner or director/);
+  const bare = fn.buildPayload({ name: 'A B', email: 'a@b.com.au' }, 'apply');
+  assert.equal(bare.role, ''); assert.equal(bare.phone, '');
+});
+
+test('validEmail rejects obviously bad addresses and accepts normal ones', () => {
+  for (const ok of ['pat@fitouts.com.au', 'a.b+c@sub.example.co', "o'neil@x.io"]) assert.equal(fn.validEmail(ok), true, ok);
+  for (const bad of ['', 'not-an-email', 'a@b', 'a@b.', 'a@.com', 'a..b@c.com', '.a@c.com', 'a b@c.com', 'a@b..com', 'a@-b.com', 'a@b.c', 'a@b.123', 'a@@b.com', `${'x'.repeat(70)}@b.com`]) assert.equal(fn.validEmail(bad), false, bad);
+});
+
+test('spamReason: honeypot, time-trap, tampered timestamp and link stuffing', () => {
+  const t = Date.parse('2026-10-16T01:00:10.000Z');
+  assert.equal(fn.spamReason({ ...sample }, '2026-10-16T01:00:10.000Z'), '');
+  assert.equal(fn.spamReason({ ...sample, 'bot-field': 'x' }), 'honeypot');
+  assert.equal(fn.spamReason({ ...sample, form_elapsed: '800' }), 'too_fast');
+  assert.equal(fn.spamReason({ ...sample, form_elapsed: '45000' }), '');
+  assert.equal(fn.spamReason({ ...sample, form_ts: String(t - 500) }, '2026-10-16T01:00:10.000Z'), 'too_fast');
+  assert.equal(fn.spamReason({ ...sample, form_ts: String(t - 60000) }, '2026-10-16T01:00:10.000Z'), '');
+  assert.equal(fn.spamReason({ ...sample, form_ts: String(t + 600000) }, '2026-10-16T01:00:10.000Z'), '', 'a fast device clock must not block a real person');
+  assert.equal(fn.spamReason({ ...sample, form_elapsed: 'abc' }), 'bad_ts');
+  assert.equal(fn.spamReason({ ...sample, goal: 'see http://a.example and https://b.example' }), 'many_urls');
+  assert.equal(fn.spamReason({ ...sample, goal: 'we are at www.fitouts.com.au' }), '');
+  assert.equal(fn.spamReason({ ...sample, website: 'https://a.example https://b.example' }), '', 'the website field is expected to hold a URL');
+});
+
+test('handler does not forward spam, and logs no personal data', async () => {
+  const m = await mock();
+  const logs = []; const origLog = console.log; console.log = (...a) => logs.push(a.join(' '));
+  try {
+    await withEnv({ LEADDRIVE_URL: m.url, LEADDRIVE_API_KEY: 'k' }, async () => {
+      assert.equal((await fn.handler(submission({ ...sample, 'bot-field': 'spam' }))).body, 'Ignored (spam check)');
+      assert.equal((await fn.handler(submission({ ...sample, form_elapsed: '300' }))).body, 'Ignored (spam check)');
+      assert.equal((await fn.handler(submission({ ...sample, goal: 'http://x.example http://y.example' }))).body, 'Ignored (spam check)');
+      assert.equal((await fn.handler(submission({ ...sample, form_elapsed: '30000' }))).body, 'Forwarded');
+    });
+  } finally { console.log = origLog; }
+  assert.equal(m.seen.length, 1);
+  assert.equal(m.seen[0].body.email, 'pat@fitouts.com.au');
+  assert.ok(!logs.join('\n').match(/pat@|Citizen|Fitouts|0400/i), 'log must not contain personal data');
+  await m.close();
+});

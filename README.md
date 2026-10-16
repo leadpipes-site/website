@@ -9,7 +9,7 @@ Built from the first LeadPipes page (same copy, navy, teal and gold look), rebui
 | Path | What it is |
 |---|---|
 | `index.html`, `apply.html`, `privacy.html`, `thanks.html`, `404.html` | Main pages (generated, committed) |
-| `lp/<slug>/index.html` | Enquiry landing pages, one per category (generated, committed, noindex) |
+| `lp/<slug>/index.html` | Enquiry landing pages, one per category (generated, committed; indexable unless `indexable` is false in the data) |
 | `src/`, `data/landing-pages.json`, `build.js` | Source: layout, partials, page content and the landing page list |
 | `assets/styles.css` | All styling |
 | `assets/track.js` | First-party attribution: reads UTM tags and ad click ids, fills the hidden form fields. No cookies, no third-party scripts. |
@@ -50,9 +50,9 @@ Edit `src/` and `data/`, never the generated HTML. Node 20 or newer; no dependen
 
 ## Before you publish: checklist for Darren
 
-- [ ] Mailbox `hello@leadpipes.com.au` exists and is monitored (it is shown in the footer and privacy page).
-- [ ] Privacy policy reviewed by a lawyer. Spam Act wording on the consent tick box confirmed.
-- [ ] ABN and business name added to the footer if you want them shown.
+- [ ] Mailbox `enquiries@leadpipes.com.au` exists and is monitored (it is shown in the footer and privacy page).
+- [ ] Fill in `data/site.json` (entity name, ABN, retention period, optional postal address). `node build.js` lists what is still missing.
+- [ ] Privacy policy reviewed by a lawyer (it has NOT been reviewed yet; see CHANGES.md for the items to ask about). Spam Act wording on the consent tick box confirmed.
 - [ ] You are comfortable with every claim: "We do not guarantee sales", "Territory protected", "Human quality control", "Every 10 weeks" review, the Darren bio line.
 - [ ] Solar landing page reviewed for any conflict with SolarPipe before you send traffic to it.
 - [ ] No client names, results or testimonials are used anywhere without written permission (none are in the site now).

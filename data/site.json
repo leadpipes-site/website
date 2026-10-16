@@ -1,0 +1,14 @@
+{
+  "_comment": "Real business facts live here. Leave a value empty until the real fact is known; the build then shows a bracketed placeholder where unavoidable and prints a warning. Never invent a value.",
+  "brand": "LeadPipes",
+  "domain": "https://leadpipes.com.au",
+  "email": "enquiries@leadpipes.com.au",
+  "bookingUrl": "https://calendly.com/darrenharry2/30min",
+  "entityName": "",
+  "abn": "",
+  "postalAddress": "",
+  "retentionPeriod": "",
+  "policyUpdated": "16/10/2026",
+  "policyUpdatedIso": "2026-10-16",
+  "lastmod": "2026-10-16"
+}

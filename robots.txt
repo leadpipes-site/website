@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /lp/
-Disallow: /thanks.html
 
 Sitemap: https://leadpipes.com.au/sitemap.xml

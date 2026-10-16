@@ -14,7 +14,52 @@
 const FORMS = new Set(['apply', 'lp-enquiry']);
 const ATTRIBUTION_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid', 'msclkid', 'referrer', 'landing_page', 'first_touch_at'];
 
+// Spam checks (no third-party services). A rejected submission is still kept in Netlify Forms; it is only not forwarded to LeadDrive.
+const MIN_FILL_MS = 2000; // a person cannot read and complete a form this fast, even with autofill
+const URL_RE = /(?:https?:\/\/|www\.)/gi;
+const FREE_TEXT = ['goal', 'name', 'business'];
+
 const clean = (v, max = 300) => String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
+
+/** True for an address that is plausibly real: one @, a dotted domain with an alphabetic TLD, no spaces or dot abuse. */
+function validEmail(raw) {
+  const e = clean(raw, 300);
+  if (e.length < 6 || e.length > 254 || e !== String(raw).trim()) return false;
+  const m = /^([^@\s]+)@([^@\s]+)$/.exec(e);
+  if (!m) return false;
+  const [, local, domain] = m;
+  if (local.length > 64 || local.startsWith('.') || local.endsWith('.') || local.includes('..')) return false;
+  if (!/^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+$/i.test(local)) return false;
+  const labels = domain.split('.');
+  if (labels.length < 2 || labels.some((l) => !l || l.length > 63 || !/^[a-z0-9-]+$/i.test(l) || l.startsWith('-') || l.endsWith('-'))) return false;
+  return /^[a-z]{2,24}$/i.test(labels[labels.length - 1]);
+}
+
+/**
+ * Returns a short reason code if the submission looks like spam, else ''. Reason codes only: never personal data.
+ *  - honeypot: the hidden bot-field was filled in
+ *  - too_fast: the form was open for less than MIN_FILL_MS (form_elapsed from the browser, else form_ts against the
+ *    server's created_at; negative gaps are ignored so a wrong clock on the visitor's device never blocks a real person)
+ *  - bad_ts: a time field is present but is not a number
+ *  - many_urls: two or more links in a free-text field
+ */
+function spamReason(data, createdAt) {
+  if (clean(data['bot-field'], 50)) return 'honeypot';
+  const elapsedRaw = clean(data.form_elapsed, 20);
+  const tsRaw = clean(data.form_ts, 20);
+  if (elapsedRaw || tsRaw) {
+    if ((elapsedRaw && !/^\d{1,12}$/.test(elapsedRaw)) || (tsRaw && !/^\d{10,14}$/.test(tsRaw))) return 'bad_ts';
+    let ms = null;
+    if (elapsedRaw) ms = Number(elapsedRaw);
+    else {
+      const created = Date.parse(createdAt || '') || Date.now();
+      ms = created - Number(tsRaw);
+    }
+    if (ms >= 0 && ms < MIN_FILL_MS) return 'too_fast';
+  }
+  for (const k of FREE_TEXT) if ((String(data[k] == null ? '' : data[k]).match(URL_RE) || []).length >= 2) return 'many_urls';
+  return '';
+}
 
 function splitName(full) {
   const parts = clean(full, 200).split(' ').filter(Boolean);
@@ -44,6 +89,7 @@ function buildPayload(data, formName) {
     email: clean(data.email, 200).toLowerCase(),
     first_name, last_name,
     company: clean(data.business, 200),
+    role: clean(data.role, 60),
     phone: clean(data.phone, 40),
     website: clean(data.website, 200),
     state: clean(data.state, 20),
@@ -56,6 +102,8 @@ function buildPayload(data, formName) {
 }
 
 exports.buildPayload = buildPayload;
+exports.validEmail = validEmail;
+exports.spamReason = spamReason;
 
 exports.handler = async (event) => {
   let submission;
@@ -68,7 +116,9 @@ exports.handler = async (event) => {
   if (!base || !key) { console.log('LeadDrive not configured; submission kept in Netlify Forms only.'); return { statusCode: 200, body: 'LeadDrive not configured' }; }
 
   const data = submission.data || {};
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clean(data.email, 200))) { console.log('Submission has no valid email; not forwarded.'); return { statusCode: 200, body: 'No valid email' }; }
+  if (!validEmail(data.email)) { console.log('Submission has no valid email; not forwarded.'); return { statusCode: 200, body: 'No valid email' }; }
+  const spam = spamReason(data, submission.created_at);
+  if (spam) { console.log(`Submission looks like spam (${spam}); not forwarded.`); return { statusCode: 200, body: 'Ignored (spam check)' }; }
 
   try {
     const res = await fetch(`${base}/api/hooks/enquiry`, {

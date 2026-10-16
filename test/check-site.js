@@ -8,14 +8,15 @@ const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })
 walk(ROOT);
 let problems = 0; const bad = (f, m) => { problems++; console.error(`FAIL ${path.relative(ROOT, f)}: ${m}`); };
 const exists = (url) => { const u = url.split('#')[0].split('?')[0]; if (!u) return true; let p = path.join(ROOT, u); if (u.endsWith('/')) p = path.join(p, 'index.html'); return fs.existsSync(p); };
-const NEED = ['form-name', 'bot-field', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid', 'msclkid', 'referrer', 'landing_page', 'first_touch_at', 'name', 'business', 'email', 'phone', 'state', 'category', 'avg_sale', 'consent'];
+const NEED = ['form-name', 'bot-field', 'form_ts', 'form_elapsed', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid', 'msclkid', 'referrer', 'landing_page', 'first_touch_at', 'name', 'business', 'email', 'phone', 'state', 'category', 'avg_sale', 'consent'];
 for (const f of pages) {
   const h = fs.readFileSync(f, 'utf8');
   for (const m of h.matchAll(/(?:href|src)="([^"]+)"/g)) { const u = m[1]; if (/^(https?:|mailto:|tel:|#)/.test(u)) continue; if (u.startsWith('/') && !exists(u)) bad(f, `broken link ${u}`); }
   const ids = new Set([...h.matchAll(/id="([^"]+)"/g)].map((m) => m[1]));
   for (const m of h.matchAll(/href="#([^"]+)"/g)) if (!ids.has(m[1])) bad(f, `missing anchor #${m[1]}`);
   if (/\sstyle="/.test(h) || /<style/i.test(h)) bad(f, 'inline style (blocked by CSP)');
-  if (/\son[a-z]+="/i.test(h) || /<script(?![^>]*\bsrc=)/i.test(h)) bad(f, 'inline script or handler (blocked by CSP)');
+  if (/\son[a-z]+="/i.test(h) || /<script(?![^>]*\bsrc=)(?![^>]*type="application\/ld\+json")/i.test(h)) bad(f, 'inline script or handler (blocked by CSP)');
+  if (/src="https?:|href="https?:\/\/[^"]*\.(css|js)"/.test(h)) bad(f, 'third-party script or stylesheet (blocked by CSP)');
   if (!/<title>[^<]{10,}/.test(h) || !/name="description"/.test(h) || !/rel="canonical" href="https:\/\/leadpipes\.com\.au/.test(h)) bad(f, 'missing title, description or leadpipes.com.au canonical');
   if (/cultivated\.agency|leadpipe\.com\.au/.test(h)) bad(f, 'wrong domain or email');
   for (const fm of h.matchAll(/<form[\s\S]*?<\/form>/g)) {
