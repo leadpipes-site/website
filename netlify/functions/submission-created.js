@@ -31,6 +31,13 @@ function buildPayload(data, formName) {
     data.category && `Category: ${clean(data.category, 80)}`,
     data.avg_sale && `Avg sale: ${clean(data.avg_sale, 40)}`,
     data.website && `Website: ${clean(data.website, 100)}`,
+    data.role && `Role: ${clean(data.role, 60)}`,
+    data.team_size && `Team: ${clean(data.team_size, 40)}`,
+    data.years_trading && `Years trading: ${clean(data.years_trading, 40)}`,
+    data.marketing_spend && `Marketing spend: ${clean(data.marketing_spend, 40)}`,
+    data.leads_wanted && `Wants per month: ${clean(data.leads_wanted, 40)}`,
+    data.sources && `Current sources: ${clean(Array.isArray(data.sources) ? data.sources.join(', ') : data.sources, 200)}`,
+    data.call_window && `Call window: ${clean(data.call_window, 40)}`,
     data.goal && `Goal: ${clean(data.goal, 600)}`,
   ].filter(Boolean).join(' | ');
   return {

@@ -44,7 +44,7 @@
     </div>
     <div class="form-card">
       <h3>Apply for exclusivity</h3>
-      <p class="sub">Takes two minutes.</p>
+      <p class="sub">Takes about three minutes. You can book a discovery call straight after.</p>
       <form name="apply" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" data-lead-form>
       <input type="hidden" name="form-name" value="apply">
       <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -86,6 +86,55 @@
         <select name="avg_sale" required>
           <option value="">Choose one</option>
           <option>Under $10,000</option><option>$10,000 to $30,000</option><option>$30,000 to $100,000</option><option>Over $100,000</option>
+        </select>
+      </label>
+      <div class="f2">
+        <label>Your role
+          <select name="role" required>
+            <option value="">Choose one</option>
+            <option>Owner or director</option><option>Sales or business development</option><option>Marketing</option><option>General manager</option><option>Other</option>
+          </select>
+        </label>
+        <label>Team size
+          <select name="team_size" required>
+            <option value="">Choose one</option>
+            <option>Just me</option><option>2 to 5</option><option>6 to 20</option><option>21 to 50</option><option>Over 50</option>
+          </select>
+        </label>
+      </div>
+      <div class="f2">
+        <label>Years trading
+          <select name="years_trading" required>
+            <option value="">Choose one</option>
+            <option>Under 2</option><option>2 to 5</option><option>6 to 10</option><option>Over 10</option>
+          </select>
+        </label>
+        <label>Monthly marketing spend (AUD)
+          <select name="marketing_spend" required>
+            <option value="">Choose one</option>
+            <option>Nothing yet</option><option>Under $2,000</option><option>$2,000 to $5,000</option><option>$5,000 to $15,000</option><option>Over $15,000</option>
+          </select>
+        </label>
+      </div>
+      <label>Opportunities you want per month
+        <select name="leads_wanted" required>
+          <option value="">Choose one</option>
+          <option>1 to 5</option><option>6 to 15</option><option>16 to 30</option><option>More than 30</option>
+        </select>
+      </label>
+      <fieldset class="checks">
+        <legend>Where your leads come from today (tick any)</legend>
+        <label class="check"><input type="checkbox" name="sources" value="Referrals"><span>Referrals</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Google or SEO"><span>Google or SEO</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Paid ads"><span>Paid ads</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Lead marketplaces"><span>Lead marketplaces</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Outbound"><span>Outbound</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Not much at the moment"><span>Not much at the moment</span></label>
+      </fieldset>
+      <label>Best time for a discovery call
+        <select name="call_window">
+          <option value="">No preference</option>
+          <option>Morning (Perth time)</option><option>Afternoon (Perth time)</option><option>Evening (Perth time)</option>
         </select>
       </label>
       <label>What would growth look like for you?<textarea name="goal" maxlength="600" placeholder="Optional. Where you sell, who you sell to, what a good year looks like."></textarea></label>

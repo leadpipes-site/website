@@ -30,8 +30,8 @@ function page({ file, title, description, canonicalPath, robots = 'index,follow'
   write(file, html);
 }
 
-function form({ formName, categoryField, buttonLabel }) {
-  const body = fill(fields, { categoryField, buttonLabel: esc(buttonLabel) });
+function form({ formName, categoryField, buttonLabel, extraFields = '' }) {
+  const body = fill(fields, { categoryField, buttonLabel: esc(buttonLabel), extraFields });
   return `<form name="${formName}" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" data-lead-form>\n${fill(hidden, { formName })}${body}    </form>`;
 }
 
@@ -41,17 +41,70 @@ const sitemap = [];
 page({ file: 'index.html', title: 'LeadPipes | Exclusive Lead Generation for Serious Operators', description: 'Exclusive, researched and qualified leads for high-value businesses that know how to close. One category. One state. One client. Built by Champions. Engineered to Win.', canonicalPath: '/', content: read('src', 'pages', 'index.html') });
 sitemap.push('/');
 
+const BOOKING_URL = 'https://calendly.com/darrenharry2/30min';
+const applyExtra = `      <div class="f2">
+        <label>Your role
+          <select name="role" required>
+            <option value="">Choose one</option>
+            <option>Owner or director</option><option>Sales or business development</option><option>Marketing</option><option>General manager</option><option>Other</option>
+          </select>
+        </label>
+        <label>Team size
+          <select name="team_size" required>
+            <option value="">Choose one</option>
+            <option>Just me</option><option>2 to 5</option><option>6 to 20</option><option>21 to 50</option><option>Over 50</option>
+          </select>
+        </label>
+      </div>
+      <div class="f2">
+        <label>Years trading
+          <select name="years_trading" required>
+            <option value="">Choose one</option>
+            <option>Under 2</option><option>2 to 5</option><option>6 to 10</option><option>Over 10</option>
+          </select>
+        </label>
+        <label>Monthly marketing spend (AUD)
+          <select name="marketing_spend" required>
+            <option value="">Choose one</option>
+            <option>Nothing yet</option><option>Under $2,000</option><option>$2,000 to $5,000</option><option>$5,000 to $15,000</option><option>Over $15,000</option>
+          </select>
+        </label>
+      </div>
+      <label>Opportunities you want per month
+        <select name="leads_wanted" required>
+          <option value="">Choose one</option>
+          <option>1 to 5</option><option>6 to 15</option><option>16 to 30</option><option>More than 30</option>
+        </select>
+      </label>
+      <fieldset class="checks">
+        <legend>Where your leads come from today (tick any)</legend>
+        <label class="check"><input type="checkbox" name="sources" value="Referrals"><span>Referrals</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Google or SEO"><span>Google or SEO</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Paid ads"><span>Paid ads</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Lead marketplaces"><span>Lead marketplaces</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Outbound"><span>Outbound</span></label>
+        <label class="check"><input type="checkbox" name="sources" value="Not much at the moment"><span>Not much at the moment</span></label>
+      </fieldset>
+      <label>Best time for a discovery call
+        <select name="call_window">
+          <option value="">No preference</option>
+          <option>Morning (Perth time)</option><option>Afternoon (Perth time)</option><option>Evening (Perth time)</option>
+        </select>
+      </label>
+`;
 const applyForm = form({
-  formName: 'apply', buttonLabel: 'Request availability',
+  formName: 'apply', buttonLabel: 'Request availability', extraFields: applyExtra,
   categoryField: `<label>Business category\n        <select name="category" required>\n          <option value="">Choose one</option>\n          ${CATEGORIES.map((c) => `<option>${esc(c)}</option>`).join('')}\n        </select>\n      </label>`,
 });
 page({
   file: 'apply.html', title: 'Check Availability | LeadPipes', description: 'Tell us what you sell, where, and what a genuine opportunity is worth. If your category and state are open and the fit is strong, Darren calls you personally.', canonicalPath: '/apply.html',
-  content: `<section class="dark">\n  <div class="wrap lp-hero">\n    <div>\n      <p class="eyebrow">Check availability</p>\n      <h1>Take the <span class="accent">territory.</span></h1>\n      <p class="lead">We take a limited number of clients so each one gets proper attention. If your category and state are open and the commercial fit is strong, Darren calls you personally.</p>\n      <div class="assure"><span>One category</span><span>One state</span><span>One client</span></div>\n    </div>\n    <div class="form-card">\n      <h3>Apply for exclusivity</h3>\n      <p class="sub">Takes two minutes.</p>\n      ${applyForm}\n    </div>\n  </div>\n</section>`,
+  content: `<section class="dark">\n  <div class="wrap lp-hero">\n    <div>\n      <p class="eyebrow">Check availability</p>\n      <h1>Take the <span class="accent">territory.</span></h1>\n      <p class="lead">We take a limited number of clients so each one gets proper attention. If your category and state are open and the commercial fit is strong, Darren calls you personally.</p>\n      <div class="assure"><span>One category</span><span>One state</span><span>One client</span></div>\n    </div>\n    <div class="form-card">\n      <h3>Apply for exclusivity</h3>\n      <p class="sub">Takes about three minutes. You can book a discovery call straight after.</p>\n      ${applyForm}\n    </div>\n  </div>\n</section>`,
 });
 sitemap.push('/apply.html');
 
-page({ file: 'thanks.html', title: 'Thanks | LeadPipes', description: 'Enquiry received.', canonicalPath: '/thanks.html', robots: 'noindex,nofollow', content: read('src', 'pages', 'thanks.html') });
+page({ file: 'thanks.html', title: 'Thanks | LeadPipes', description: 'Enquiry received.', canonicalPath: '/thanks.html', robots: 'noindex,nofollow', content: fill(read('src', 'pages', 'thanks.html'), { booking: BOOKING_URL }) });
+page({ file: 'book.html', title: 'Book a Discovery Call | LeadPipes', description: 'Book a 30 minute discovery call with Darren Harry to see whether your category and state are open.', canonicalPath: '/book.html', content: fill(read('src', 'pages', 'book.html'), { booking: BOOKING_URL }) });
+sitemap.push('/book.html');
 page({ file: '404.html', title: 'Page not found | LeadPipes', description: 'Page not found.', canonicalPath: '/404.html', robots: 'noindex,nofollow', content: read('src', 'pages', '404.html') });
 page({ file: 'privacy.html', title: 'Privacy policy | LeadPipes', description: 'How LeadPipes collects, uses and protects information.', canonicalPath: '/privacy.html', content: fill(read('src', 'pages', 'privacy.html'), { updated }) });
 sitemap.push('/privacy.html');

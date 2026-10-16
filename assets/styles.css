@@ -141,3 +141,7 @@ footer .legal{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.nav,.hero:before{display:none}}
+fieldset.checks{border:0;margin:0 0 4px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+fieldset.checks legend{padding:0;margin-bottom:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--navy,#0b1f2e)}
+fieldset.checks label.check{margin:0}
+@media (max-width:520px){fieldset.checks{grid-template-columns:1fr}}
