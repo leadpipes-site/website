@@ -205,3 +205,14 @@ ul.ticks li:before{content:"\2713";position:absolute;left:0;color:var(--teal-d);
 footer .foot>div{min-width:200px}
 footer .legal{color:#8fa7b8}
 @media (max-width:860px){.nav nav a:not(.pill){display:none}}
+
+/* ---------- mission statement: Built by champions. Engineered to win. ---------- */
+.mission-bar{background:#04121c;color:var(--cream);text-align:center;font:900 11px/1 "Arial Black",Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.mission-bar .accent{color:var(--gold)}
+.mission-hero{margin:0 0 30px;font:900 clamp(34px,6vw,72px)/.98 "Arial Black",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.04em;color:var(--cream)}
+.mission-hero .accent{display:block;color:var(--gold)}
+.mission{background:var(--navy2);color:var(--cream);padding:72px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.mission .eyebrow{color:var(--gold)}.mission .eyebrow:before{background:var(--gold)}
+.mission-line{font-size:clamp(30px,5vw,56px);line-height:1;letter-spacing:-.03em;margin:0 0 34px}
+.mission-line .accent{display:block;color:var(--teal)}
+@media(max-width:520px){.mission-bar{font-size:10px;letter-spacing:.14em}}

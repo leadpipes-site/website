@@ -93,7 +93,7 @@ const orgLd = {
 if (site.entityName) orgLd.legalName = site.entityName;
 const siteLd = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', url: SITE + '/', name: 'LeadPipes', inLanguage: 'en-AU', publisher: { '@id': SITE + '/#organization' } };
 page({
-  file: 'index.html', title: 'LeadPipes | Exclusive Lead Generation for Australian Businesses',
+  file: 'index.html', title: 'LeadPipes | Built by Champions. Engineered to Win. Exclusive Leads',
   description: 'Exclusive, researched and qualified leads for Australian businesses that know how to close. One category, one state, one client. Built by champions. Engineered to win.',
   canonicalPath: '/', content: fill(read('src', 'pages', 'index.html'), { categoryCards }), ld: [orgLd, siteLd],
 });
