@@ -99,6 +99,13 @@ function buildPayload(data, formName) {
     data.monthly_budget && `Monthly budget: ${clean(data.monthly_budget, 40)}`,
     data.exclusive_ok && `Exclusive 6-12 months: ${clean(data.exclusive_ok, 60)}`,
   ].filter(Boolean).join(' | ');
+  // The apply form carries the full commercial qualification. Send it as a structured record so LeadDrive stores and shows every answer.
+  const APP_KEYS = ['website', 'role', 'goal', 'target_market', 'category', 'states', 'avg_sale', 'gross_margin', 'customer_value', 'sales_cycle', 'salespeople', 'conversion', 'response_speed', 'growth_goal', 'constraint', 'qualified_opportunity', 'why_you', 'monthly_budget', 'exclusive_ok'];
+  let application;
+  if (data.target_market || data.exclusive_ok || data.gross_margin) {
+    application = { business_name: clean(data.business, 200) };
+    for (const k of APP_KEYS) { const v = Array.isArray(data[k]) ? data[k].join(', ') : data[k]; if (v) application[k] = clean(v, 800); }
+  }
   return {
     email: clean(data.email, 200).toLowerCase(),
     first_name, last_name,
@@ -109,7 +116,8 @@ function buildPayload(data, formName) {
     state: clean(Array.isArray(data.states) ? data.states.join(', ') : (data.states || data.state), 40),
     vertical: clean(data.category, 100),
     title: `Website enquiry: ${clean(data.business, 120) || clean(data.name, 120)}`,
-    message,
+    message: application ? `Partner application: ${clean(data.goal, 300)}` : message,
+    application,
     source: `Website form: ${page}`,
     attribution,
   };
