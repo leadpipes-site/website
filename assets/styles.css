@@ -2,7 +2,7 @@
 :root{
   --navy:#071b2b;--navy2:#0c2638;--navy3:#183b50;
   --teal:#1fb7a8;--teal-d:#0a756b;--teal-soft:#ddf6f2;
-  --gold:#d8a13b;--gold-d:#b9852a;
+  --yellow:#e4b34e;--gold:#d8a13b;--gold-d:#b9852a;
   --cream:#f4f1e9;--ink:#102838;--muted:#5d7080;--line:#d9e2e7;--bg:#f3f6f8;--white:#fff;--err:#c7514c;
   --dim:#86a3b8;
 }
@@ -275,3 +275,20 @@ label .opt,label .req{display:inline}
 .check-grid label.check{min-width:0}
 @media (max-width:860px){.check-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.check-grid label.check{padding:11px 8px;gap:8px;font-size:13px}.check-grid label.check input{width:18px;height:18px}}
 @media (max-width:860px){.check-grid label.check:last-child{grid-column:1/-1}}
+
+/* yellow sections: navy/black text on the brand yellow, white cards on top */
+.yellow,.cta-band{background:var(--yellow);color:var(--navy)}
+.yellow h2,.yellow h3,.yellow .tag,.cta-band .tag,.cta-band h2{color:var(--navy)}
+.yellow p,.cta-band p{color:#0e2231}
+.yellow .eyebrow,.cta-band .eyebrow{color:var(--navy)}
+.yellow .eyebrow:before,.cta-band .eyebrow:before{background:var(--navy)}
+.yellow .accent,.cta-band .accent{color:var(--navy);text-decoration:underline;text-decoration-thickness:.1em;text-underline-offset:.12em;text-decoration-color:#fff}
+.yellow a:not(.btn),.cta-band a:not(.btn){color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.yellow .btn,.cta-band .btn{background:var(--navy);color:#fff}
+.yellow .btn:hover,.cta-band .btn:hover{background:#000}
+.yellow .define{color:#0e2231}
+.yellow .small-print,.cta-band .small-print{color:#1b3040}
+.yellow .box,.yellow .pillar,.yellow .form-card{background:#fff}
+.yellow .box p,.yellow .pillar p,.yellow .box li{color:var(--ink)}
+.yellow .box h3{color:var(--navy3)}
+.yellow .define a,.yellow .box a{color:var(--teal-d)}
