@@ -99,7 +99,7 @@ test('forms: short essentials, optional extras, collection notice, hidden attrib
   for (const n of ['avg_sale', 'gross_margin', 'customer_value', 'sales_cycle', 'monthly_budget', 'exclusive_ok', 'qualified_opportunity', 'why_you', 'target_market']) assert.match(ap, new RegExp(`name="${n}"[^>]*required`), `apply requires ${n}`);
   assert.match(ap, /name="phone"(?![^>]*required)/); assert.match(ap, /data-require-one/);
   assert.match(ap, /name="form_ts"/); assert.match(ap, /name="bot-field"/); assert.match(ap, /Collection notice/); assert.match(ap, /name="consent"[^>]*required/);
-  assert.match(rd('apply.html'), /Fewer partners\.[\s\S]*Better opportunities\.[\s\S]*Deeper partnerships\./);
+  assert.match(rd('apply.html'), /Selective by design\.[\s\S]*Exclusive by agreement\.[\s\S]*Measured every 10 weeks\./);
   assert.match(rd('lp/b2b-services/index.html'), /<form name="lp-enquiry"/);
 });
 
