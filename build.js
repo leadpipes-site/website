@@ -54,7 +54,15 @@ const entityLines = (() => {
   if (site.postalAddress) out += `        <p>${esc(site.postalAddress)}</p>\n`;
   return out;
 })();
-const footer = fill(footerTpl, { entityLines, footerCategories, email: esc(EMAIL) }).replace(/<!--[\s\S]*?-->\n?/g, '');
+const SOCIAL_ICONS = {
+  facebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M14 8V6.5c0-.7.3-1 1-1h1.8V2.6H14.5C11.9 2.6 10.5 4.2 10.5 6.4V8H8v3h2.5v9H14v-9h2.6l.4-3z"/></svg>',
+  instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="#fff"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6.9 9.5H3.8V20h3.1zM5.3 4.5a1.8 1.8 0 100 3.6 1.8 1.8 0 000-3.6zM20 20v-5.9c0-3-1.6-4.4-3.8-4.4-1.7 0-2.5 1-2.9 1.6V9.5h-3.1V20h3.1v-5.7c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20z"/></svg>'
+};
+const SOCIAL_LABELS = { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn' };
+const socialLinks = Object.keys(SOCIAL_LABELS).filter((k) => site.social && site.social[k]).map((k) =>
+  `<a class="soc ${k}" href="${esc(site.social[k])}" target="_blank" rel="noopener noreferrer" aria-label="LeadPipes on ${SOCIAL_LABELS[k]} (opens in a new tab)" title="${SOCIAL_LABELS[k]}">${SOCIAL_ICONS[k]}</a>`).join('');
+const footer = fill(footerTpl, { socialLinks, entityLines, footerCategories, email: esc(EMAIL) }).replace(/<!--[\s\S]*?-->\n?/g, '');
 
 const ldScript = (o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>\n`;
 const crumbLd = (items) => ({
@@ -87,7 +95,7 @@ const categoryCards = linked.map((l) => `      <a class="pillar pillar-link" hre
 const orgLd = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': SITE + '/#organization', name: 'LeadPipes', url: SITE + '/',
   description: 'Exclusive lead partnerships for a handful of serious Australian businesses. One partner per category per state.',
-  email: EMAIL, areaServed: { '@type': 'Country', name: 'Australia' },
+  email: EMAIL, sameAs: Object.values(site.social || {}), areaServed: { '@type': 'Country', name: 'Australia' },
   founder: { '@type': 'Person', name: 'Darren Harry' },
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: EMAIL, areaServed: 'AU', availableLanguage: 'en-AU' },
 };
