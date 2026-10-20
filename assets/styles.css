@@ -216,3 +216,12 @@ footer .legal{color:#8fa7b8}
 .mission-line{font-size:clamp(30px,5vw,56px);line-height:1;letter-spacing:-.03em;margin:0 0 34px}
 .mission-line .accent{display:block;color:var(--teal)}
 @media(max-width:520px){.mission-bar{font-size:10px;letter-spacing:.14em}}
+.white .list-num li,.on-light .list-num li{color:var(--ink);border-top-color:var(--line);font-size:17px}
+.white .list-num li:last-child,.on-light .list-num li:last-child{border-bottom-color:var(--line)}
+.white .list-num b,.on-light .list-num b{color:var(--teal-d)}
+.white .list-num strong,.on-light .list-num strong{font-family:"Arial Black",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.02em}
+.pillar p b{display:block;font:900 17px/1.15 "Arial Black",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:6px}
+.hero h1{font-size:clamp(32px,4.6vw,62px)}
+#darren h2{font-size:clamp(28px,3.4vw,44px)}
+#selection .pillars{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){#selection .pillars{grid-template-columns:1fr}}

@@ -49,7 +49,7 @@ test('kitchens page is noindex, out of the sitemap and not linked from home or f
 test('solar page makes no sitewide exclusivity claim', () => {
   const h = rd('lp/commercial-solar/index.html');
   assert.doesNotMatch(h, /One installer per state|Your competitors do not get the same lead|Protected state/);
-  assert.match(h, /per category, state and client/);
+  assert.match(h, /per category, state and partner/);
 });
 
 test('JSON-LD is valid; FAQPage matches the visible FAQ; Organization and WebSite on home', () => {
@@ -57,7 +57,7 @@ test('JSON-LD is valid; FAQPage matches the visible FAQ; Organization and WebSit
   const types = (h) => blocks(h).map((b) => b['@type']);
   assert.deepEqual(types(rd('index.html')).sort(), ['Organization', 'WebSite']);
   const faq = rd('faq.html'); const f = blocks(faq).find((b) => b['@type'] === 'FAQPage');
-  assert.ok(f.mainEntity.length >= 8 && f.mainEntity.length <= 10);
+  assert.ok(f.mainEntity.length >= 8 && f.mainEntity.length <= 16);
   const visible = faq.replace(/<[^>]+>/g, ' ').replace(/&#39;|&rsquo;/g, "'").replace(/&amp;/g, '&').replace(/\s+/g, ' ');
   for (const q of f.mainEntity) { assert.ok(visible.includes(q.name.replace(/\s+/g, ' ')), `question visible: ${q.name}`); assert.ok(visible.includes(q.acceptedAnswer.text.slice(0, 60)), `answer visible: ${q.name}`); }
   for (const p of pages.filter((x) => !['index.html', 'faq.html', '404.html', 'thanks.html'].includes(x))) assert.ok(types(rd(p)).includes('BreadcrumbList'), `${p} has breadcrumbs`);
@@ -65,18 +65,18 @@ test('JSON-LD is valid; FAQPage matches the visible FAQ; Organization and WebSit
   assert.ok(fs.existsSync(path.join(ROOT, 'assets/og-image.png')));
 });
 
-test('two CTA labels sitewide; /book is the primary CTA in header and hero', () => {
-  const banned = /Check availability|Check my state|Talk to Darren|Apply for exclusivity|Request category availability|Request availability/i;
+test('one primary CTA label sitewide; /apply is the CTA in header and hero; booking is by invitation only', () => {
+  const banned = /Check availability|Check my state|Talk to Darren|Apply for exclusivity|Request category availability|Request availability|Book a discovery call|Apply for a territory|take the territory/i;
   for (const f of pages) {
     const h = rd(f); assert.doesNotMatch(h, banned, f);
     for (const m of h.matchAll(/<a class="(?:btn(?: ghost| ghost-dark)?|pill)"[^>]*>([^<]+)/g)) {
       const label = m[1].trim();
-      assert.ok(['Book a discovery call', 'Apply for a territory', 'Back to LeadPipes', 'Read the FAQ', 'Go to the home page'].includes(label), `${f}: unexpected CTA label "${label}"`);
+      assert.ok(['Apply to work with Darren', 'Apply', 'How selection works', 'Back to LeadPipes', 'Read the FAQ', 'Go to the home page'].includes(label), `${f}: unexpected CTA label "${label}"`);
     }
   }
   const home = rd('index.html');
-  assert.match(home, /class="pill" href="\/book\.html">Book a discovery call/);
-  assert.match(/<section class="hero">[\s\S]*?<\/section>/.exec(home)[0], /class="btn" href="\/book\.html">Book a discovery call/);
+  assert.match(home, /class="pill" href="\/apply\.html">Apply/);
+  assert.match(/<section class="hero">[\s\S]*?<\/section>/.exec(home)[0], /class="btn" href="\/apply\.html">Apply to work with Darren/);
 });
 
 test('forms: short essentials, optional extras, collection notice, hidden attribution and time-trap fields', () => {
@@ -96,9 +96,10 @@ test('forms: short essentials, optional extras, collection notice, hidden attrib
   assert.match(rd('lp/b2b-services/index.html'), /<form name="lp-enquiry"/);
 });
 
-test('track.js fills form_ts and keeps the Calendly URL', () => {
+test('track.js fills form_ts; the public site does not expose the Calendly link (booking is by invitation)', () => {
   assert.match(rd('assets/track.js'), /form_ts/); assert.match(rd('assets/track.js'), /form_elapsed/);
-  assert.ok(rd('book.html').includes('https://calendly.com/darrenharry2/30min'));
+  for (const f of pages) assert.ok(!rd(f).includes('calendly.com/darrenharry2'), `${f} exposes the booking link`);
+  assert.match(robotsOf(rd('book.html')), /^noindex/);
 });
 
 test('privacy policy: honest about sharing, named providers, fixed date, no draft/lawyer claim, placeholders only where unavoidable', () => {

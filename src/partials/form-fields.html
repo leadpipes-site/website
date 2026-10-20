@@ -7,13 +7,14 @@
         <label>Website<input type="text" inputmode="url" name="website" required placeholder="yourbusiness.com.au" autocomplete="url" data-error="Enter your website address, or type none if you do not have one."></label>
       </div>
 {{row3}}
-      <label>What do you want from LeadPipes?<textarea name="goal" required maxlength="600" data-error="Tell us in a sentence or two what you are looking for." placeholder="For example: more qualified conversations with commercial buyers in WA."></textarea></label>
+      <label>What do you sell, and to whom?<textarea name="goal" required maxlength="600" data-error="Tell us in a sentence or two what you sell and who buys it." placeholder="For example: commercial solar for manufacturers and warehouses in WA."></textarea></label>
       <label>Phone <span class="opt">(optional)</span><input type="tel" name="phone" autocomplete="tel" placeholder="Only if you would like a call"></label>
       <details class="more">
         <summary>Tell us more (optional)</summary>
         <div class="more-body">
-          <p class="small-print">Skip this if you like. It helps us prepare for the discovery call.</p>
-          <label>Average sale value (AUD)
+          <p class="small-print">Skip this if you like. The more you tell me, the easier it is for me to say yes.</p>
+          <label>Why do your best customers buy from you rather than a competitor?<textarea name="why_you" maxlength="600"></textarea></label>
+          <label>Average first sale value (AUD)
             <select name="avg_sale">
               <option value="">Choose one</option>
               <option>Under $10,000</option><option>$10,000 to $30,000</option><option>$30,000 to $100,000</option><option>Over $100,000</option>
@@ -21,6 +22,6 @@
           </label>
 {{extraFields}}        </div>
       </details>
-      <label class="check"><input type="checkbox" name="consent" required data-error="Please tick the box so we can contact you about this enquiry."><span>I agree that LeadPipes may contact me by email, phone or SMS about this enquiry and our discovery call. I can opt out at any time. See the <a href="/privacy.html">privacy policy</a>.</span></label>
+      <label class="check"><input type="checkbox" name="consent" required data-error="Please tick the box so we can contact you about this enquiry."><span>I agree that LeadPipes may contact me by email, phone or SMS about this application and a possible conversation. I can opt out at any time. See the <a href="/privacy.html">privacy policy</a>.</span></label>
       <button class="btn" type="submit">{{buttonLabel}}</button>
       <p class="small-print">Collection notice: LeadPipes collects these details to respond to your enquiry and assess whether we can work together. We do not sell them or pass them to other clients. We use service providers to host and store them, and some may process data outside Australia. How we handle personal information, and how to ask for access, correction or removal: <a href="/privacy.html">privacy policy</a>.</p>

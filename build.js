@@ -85,7 +85,7 @@ const STATE_FIELD = `<label>State
 const categoryCards = linked.map((l) => `      <a class="pillar pillar-link" href="/lp/${l.slug}/"><small>Category</small><b>${esc(l.crumb)}</b><span class="more">${esc(plain(l.lead).split('. ')[0].replace(/\.$/, ''))}.</span></a>\n`).join('');
 const orgLd = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': SITE + '/#organization', name: 'LeadPipes', url: SITE + '/',
-  description: 'Exclusive, researched and qualified lead generation for Australian businesses. One client per category per state.',
+  description: 'Exclusive lead partnerships for a handful of serious Australian businesses. One partner per category per state.',
   email: EMAIL, areaServed: { '@type': 'Country', name: 'Australia' },
   founder: { '@type': 'Person', name: 'Darren Harry' },
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: EMAIL, areaServed: 'AU', availableLanguage: 'en-AU' },
@@ -93,15 +93,15 @@ const orgLd = {
 if (site.entityName) orgLd.legalName = site.entityName;
 const siteLd = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', url: SITE + '/', name: 'LeadPipes', inLanguage: 'en-AU', publisher: { '@id': SITE + '/#organization' } };
 page({
-  file: 'index.html', title: 'LeadPipes | Built by Champions. Engineered to Win. Exclusive Leads',
-  description: 'Exclusive, researched and qualified leads for Australian businesses that know how to close. One category, one state, one client. Built by champions. Engineered to win.',
+  file: 'index.html', title: 'LeadPipes | Exclusive Lead Partnerships, Australia',
+  description: 'A handful of partners. One category, one state, one partner. Researched, qualified opportunities led by Darren Harry OAM, Olympic medallist and World Champion.',
   canonicalPath: '/', content: fill(read('src', 'pages', 'index.html'), { categoryCards }), ld: [orgLd, siteLd],
 });
 
 // ---- how it works, FAQ ----
 page({
-  file: 'how-it-works.html', title: 'How a LeadPipes Handover Works | LeadPipes',
-  description: 'See what you receive with every lead, an illustrative sample lead pack, and the performance targets LeadPipes measures itself against.',
+  file: 'how-it-works.html', title: 'How LeadPipes Chooses Partners and Hands Over | LeadPipes',
+  description: 'How LeadPipes chooses its partners, what you receive with every lead, an illustrative sample lead pack, and the performance targets we measure ourselves against.',
   canonicalPath: '/how-it-works.html', content: read('src', 'pages', 'how-it-works.html'),
   ld: [crumbLd([['Home', '/'], ['How it works', '/how-it-works.html']])],
 });
@@ -109,13 +109,13 @@ const faqItems = faq.map((f) => `      <details class="qa"><summary>${esc(f.q)}<
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 page({
   file: 'faq.html', title: 'Frequently Asked Questions | LeadPipes',
-  description: 'Plain answers on exclusivity, what qualified means, replacements, how leads are sourced, the Spam Act, what LeadPipes does not do, and how to start.',
+  description: 'Plain answers on how partners are chosen, exclusivity, what qualified means, replacements, price, the Spam Act, what LeadPipes does not do, and how to apply.',
   canonicalPath: '/faq.html', content: fill(read('src', 'pages', 'faq.html'), { faqItems }),
   ld: [faqLd, crumbLd([['Home', '/'], ['FAQ', '/faq.html']])],
 });
 
 // ---- apply ----
-const applyExtra = `          <div class="f2">
+const applyExtra = `          <label>What is a customer worth to you over time? (AUD)\n            <select name="customer_value">\n              <option value="">Choose one</option>\n              <option>Under $20,000</option><option>$20,000 to $50,000</option><option>$50,000 to $150,000</option><option>Over $150,000</option>\n            </select>\n          </label>\n          <label>Who closes your sales, and how quickly does your team respond to a new enquiry?<textarea name="response_time" maxlength="400"></textarea></label>\n          <label>What would a great next twelve months look like, in numbers?<textarea name="twelve_months" maxlength="400"></textarea></label>\n          <label>What would you expect from me, and what are you willing to commit?<textarea name="commitment" maxlength="400"></textarea></label>\n          <div class="f2">
             <label>Your role
               <select name="role">
                 <option value="">Choose one</option>
@@ -158,31 +158,31 @@ const applyExtra = `          <div class="f2">
             <label class="check"><input type="checkbox" name="sources" value="Outbound"><span>Outbound</span></label>
             <label class="check"><input type="checkbox" name="sources" value="Not much at the moment"><span>Not much at the moment</span></label>
           </fieldset>
-          <label>Best time for a discovery call
+          <label>Best time for a conversation
             <select name="call_window">
               <option value="">No preference</option>
               <option>Morning (Perth time)</option><option>Afternoon (Perth time)</option><option>Evening (Perth time)</option>
             </select>
           </label>
 `;
-const CTA_APPLY = 'Apply for a territory';
+const CTA_APPLY = 'Submit my application';
 const applyForm = form({
   formName: 'apply', buttonLabel: CTA_APPLY, extraFields: applyExtra,
   row3: `      <div class="f2">\n        <label>Business category\n          <select name="category" required data-error="Choose the category that best describes your business.">\n            <option value="">Choose one</option>\n            ${CATEGORIES.map((c) => `<option>${esc(c)}</option>`).join('')}\n          </select>\n        </label>\n        ${STATE_FIELD}\n      </div>`,
 });
 page({
-  file: 'apply.html', title: 'Apply for a Territory | LeadPipes',
-  description: 'Tell us what you sell, where, and what you want from LeadPipes. If your category and state are open and the fit is strong, Darren replies personally.', canonicalPath: '/apply.html',
-  content: `<section class="dark">\n  <div class="wrap lp-hero">\n    <div>\n      <p class="eyebrow">Apply for a territory</p>\n      <h1>Take the <span class="accent">territory.</span></h1>\n      <p class="lead">We take a limited number of clients so each one gets proper attention. If your category and state are open and the commercial fit is strong, Darren replies personally.</p>\n      <div class="assure"><span>One category</span><span>One state</span><span>One client</span></div>\n      <p class="side-link"><a class="textlink" href="/book.html">Prefer to talk first? Book a discovery call</a></p>\n    </div>\n    <div class="form-card">\n      <h2 class="form-title">Apply for a territory</h2>\n      <p class="sub">Seven short questions. Everything else is optional.</p>\n      ${applyForm}\n    </div>\n  </div>\n</section>`,
-  ld: [crumbLd([['Home', '/'], ['Apply for a territory', '/apply.html']])],
+  file: 'apply.html', title: 'Apply to Work with Darren | LeadPipes',
+  description: 'Tell Darren what you sell, who buys it and what a good customer is worth. He reads every application and replies personally within 3 business days.', canonicalPath: '/apply.html',
+  content: `<section class="dark">\n  <div class="wrap lp-hero">\n    <div>\n      <p class="eyebrow">Apply to work with Darren</p>\n      <h1>Not everyone qualifies. <span class="accent">That is the point.</span></h1>\n      <p class="lead">This is a two-way assessment. I work with a handful of partners and I decide who, so the work is worth doing for both of us. I read every application myself. If your business looks like a fit and your category and state are open, I will reply with a link to book a thirty minute conversation. If it is not, I will tell you plainly, and where I can, point you somewhere better. You will hear from me within 3 business days either way.</p>\n      <div class="assure"><span>One category</span><span>One state</span><span>One partner</span></div>\n    </div>\n    <div class="form-card">\n      <h2 class="form-title">Tell me about your business.</h2>\n      <p class="sub">Seven short questions are required. The rest are optional, and they help me say yes.</p>\n      ${applyForm}\n    </div>\n  </div>\n</section>`,
+  ld: [crumbLd([['Home', '/'], ['Apply to work with Darren', '/apply.html']])],
 });
 
-page({ file: 'thanks.html', title: 'Thanks | LeadPipes', description: 'Enquiry received.', canonicalPath: '/thanks.html', robots: 'noindex,nofollow', content: fill(read('src', 'pages', 'thanks.html'), { booking: BOOKING_URL }) });
+page({ file: 'thanks.html', title: 'Thanks | LeadPipes', description: 'Enquiry received.', canonicalPath: '/thanks.html', robots: 'noindex,nofollow', content: fill(read('src', 'pages', 'thanks.html'), { }) });
 page({
-  file: 'book.html', title: 'Book a Discovery Call | LeadPipes',
-  description: 'Book a 30 minute discovery call with Darren Harry to see whether your category and state are open.', canonicalPath: '/book.html',
-  content: fill(read('src', 'pages', 'book.html'), { booking: BOOKING_URL }),
-  ld: [crumbLd([['Home', '/'], ['Book a discovery call', '/book.html']])],
+  file: 'book.html', title: 'Your Conversation with Darren | LeadPipes',
+  description: 'Conversations with Darren Harry are by invitation, once an application has been reviewed.', canonicalPath: '/book.html', robots: 'noindex,follow',
+  content: read('src', 'pages', 'book.html'),
+  ld: [crumbLd([['Home', '/'], ['Your conversation with Darren', '/book.html']])],
 });
 page({ file: '404.html', title: 'Page not found | LeadPipes', description: 'Page not found.', canonicalPath: '/404.html', robots: 'noindex,nofollow', content: read('src', 'pages', '404.html') });
 page({
@@ -226,12 +226,12 @@ for (const lp of landing) {
       <p class="eyebrow">${esc(lp.eyebrow)}</p>
       <h1>${lp.h1}</h1>
       <p class="lead">${esc(lp.lead)}</p>
-      <div class="cta-row"><a class="btn" href="/book.html">Book a discovery call</a><a class="btn ghost" href="#enquire">${CTA_APPLY}</a></div>
-      <div class="assure"><span>One category</span><span>One state</span><span>One client</span></div>
+      <div class="cta-row"><a class="btn" href="#enquire">Apply to work with Darren</a></div>
+      <div class="assure"><span>One category</span><span>One state</span><span>One partner</span></div>
     </div>
     <div class="form-card" id="enquire">
-      <h2 class="form-title">${CTA_APPLY}</h2>
-      <p class="sub">Seven short questions. If your category and state are open, Darren replies personally.</p>
+      <h2 class="form-title">Tell me about your business.</h2>
+      <p class="sub">Seven short questions. I read every application myself, and reply within 3 business days.</p>
       ${f}
     </div>
   </div>
@@ -247,8 +247,8 @@ for (const lp of landing) {
 ${intro}
 <section class="white">
   <div class="wrap founder">
-    <p>We want serious operators: businesses where one good sale matters, with a team that responds fast and can close. <b>We do not guarantee sales.</b> We commit to researched, qualified, exclusive opportunities.</p>
-    <a class="btn" href="/book.html">Book a discovery call</a>
+    <p>I work with a handful of serious operators: businesses where one good sale matters, with a team that responds fast and can close. <b>We do not guarantee sales.</b> We commit to researched, qualified, exclusive opportunities.</p>
+    <a class="btn" href="#enquire">Apply to work with Darren</a>
   </div>
 </section>`;
   const robots = lp.indexable ? 'index,follow' : 'noindex,follow';

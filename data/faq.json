@@ -1,7 +1,19 @@
 [
   {
     "q": "What does exclusive actually mean?",
-    "a": "We agree one client per category per state, in writing. While your agreement runs, we do not hand the opportunities we create in your category and state to another LeadPipes client. It covers the opportunities LeadPipes creates for you. It cannot control what other lead sources, marketplaces or advertising your competitors use."
+    "a": "We agree one partner per category per state, in writing. While your agreement runs, we do not hand the opportunities we create in your category and state to another LeadPipes partner. It covers the opportunities LeadPipes creates for you. It cannot control what other lead sources, marketplaces or advertising your competitors use."
+  },
+  {
+    "q": "How do you choose who you work with?",
+    "a": "I look at six things: a credible business, a market you understand, an offer worth building on, customers worth winning, a team that responds and closes, and commitment to a long-term relationship. I read every application myself and say yes, not yet or no, with the reason."
+  },
+  {
+    "q": "Do you turn businesses down?",
+    "a": "Yes. If the commercial fit is not there, or your category and state are already held by another partner, I will say so and explain why. It saves your time and mine."
+  },
+  {
+    "q": "What do you ask of me?",
+    "a": "A credible business, honest numbers, a team that responds quickly and closes, and a long-term view. We set goals together at the start and review them every 10 weeks."
   },
   {
     "q": "What does qualified mean?",
@@ -10,6 +22,10 @@
   {
     "q": "What happens if a lead is not right?",
     "a": "You tell us which lead and why. We review it against the criteria we agreed. Where a lead does not meet them, we replace it. We aim to keep replacements under 10 percent of handed-over leads, and we track that. The exact terms are set out in your written agreement."
+  },
+  {
+    "q": "What does it cost, and why so few partners?",
+    "a": "Our partnerships are a monthly retainer that reflects the value of the opportunities we deliver, agreed once we have confirmed the fit. That only makes sense where a new customer is worth a great deal to you. Quality needs attention, and attention is limited, so I take a small number of partners and give each of them my time. We do not publish a price list on this website."
   },
   {
     "q": "How do you find the people you contact, and is that compliant with the Spam Act?",
@@ -21,22 +37,30 @@
   },
   {
     "q": "Who is LeadPipes for?",
-    "a": "Australian businesses where one good sale can change the month, that know their ideal customer and the value of a win, and whose team responds quickly and can close. Our categories include commercial solar and energy, commercial fit-out and construction, and B2B and professional services."
+    "a": "Serious Australian businesses where one good sale can change the month, that know their ideal customer and the value of a win, and whose team responds quickly and can close. Categories include commercial solar and energy, commercial fit-out and construction, and B2B and professional services."
   },
   {
     "q": "Who is it not for?",
     "a": "It is not for businesses that want thousands of cheap names, expect leads to close themselves, take days to respond, cannot define a valuable customer, or want guarantees over decisions we do not control."
   },
   {
-    "q": "What does it cost?",
-    "a": "Pricing is agreed on the discovery call and confirmed with you directly. We do not publish a price list on this website."
+    "q": "Why does sport matter for lead generation?",
+    "a": "Elite sport taught me that results come from a clear standard, honest measurement, disciplined repetition and people who hold you to it. I run LeadPipes the same way: selective, prepared, measured and reviewed. That is the difference."
+  },
+  {
+    "q": "Who is Darren Harry?",
+    "a": "Darren is an Olympic medallist, World Champion and former professional cyclist, and a former Managing Director in commercial renewable energy, with nine years in that industry. He co-founded LeadPipes and works with every partner personally."
+  },
+  {
+    "q": "What do you mean by Partner?",
+    "a": "It is how we describe a close, selective relationship under a written agreement. It is not a legal partnership, joint venture or profit share."
   },
   {
     "q": "How do I start?",
-    "a": "Book a 30 minute discovery call. We cover what you sell, where, and what a genuine opportunity is worth to you, then tell you plainly whether your category and state are open. If you would rather write first, apply for a territory and Darren will reply personally."
+    "a": "Apply to work with Darren. Tell us what you sell, where, and what a good customer is worth. Darren reads every application and replies personally within 3 business days. If your business looks like a fit and your category and state are open, he will send you a link to book a 30 minute conversation."
   },
   {
     "q": "Is there proof it works?",
-    "a": "We do not publish testimonials, client names or results on this website. The performance gates on the How it works page are targets, not results we have achieved, and the sample lead pack there is an illustrative example. On the discovery call we will tell you plainly what we can and cannot show."
+    "a": "We do not publish testimonials, client names or results on this website. The performance gates on the How it works page are targets, not results we have achieved, and the sample lead pack there is an illustrative example. In our conversation we will tell you plainly what we can and cannot show."
   }
 ]
