@@ -17,7 +17,7 @@ const ATTRIBUTION_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_conte
 // Spam checks (no third-party services). A rejected submission is still kept in Netlify Forms; it is only not forwarded to LeadDrive.
 const MIN_FILL_MS = 2000; // a person cannot read and complete a form this fast, even with autofill
 const URL_RE = /(?:https?:\/\/|www\.)/gi;
-const FREE_TEXT = ['goal', 'name', 'business'];
+const FREE_TEXT = ['goal', 'name', 'business', 'target_market', 'why_you', 'qualified_opportunity'];
 
 const clean = (v, max = 300) => String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
 
@@ -84,6 +84,20 @@ function buildPayload(data, formName) {
     data.sources && `Current sources: ${clean(Array.isArray(data.sources) ? data.sources.join(', ') : data.sources, 200)}`,
     data.call_window && `Call window: ${clean(data.call_window, 40)}`,
     data.goal && `Goal: ${clean(data.goal, 600)}`,
+    data.target_market && `Target market: ${clean(data.target_market, 600)}`,
+    data.states && `States: ${clean(Array.isArray(data.states) ? data.states.join(', ') : data.states, 80)}`,
+    data.gross_margin && `Gross margin: ${clean(data.gross_margin, 40)}`,
+    data.customer_value && `Customer lifetime value: ${clean(data.customer_value, 40)}`,
+    data.sales_cycle && `Sales cycle: ${clean(data.sales_cycle, 40)}`,
+    data.salespeople && `Salespeople: ${clean(data.salespeople, 40)}`,
+    data.conversion && `Close rate: ${clean(data.conversion, 40)}`,
+    data.response_speed && `Response speed: ${clean(data.response_speed, 40)}`,
+    data.growth_goal && `Growth objective: ${clean(data.growth_goal, 400)}`,
+    data.constraint && `Constraint: ${clean(data.constraint, 400)}`,
+    data.qualified_opportunity && `Qualified opportunity: ${clean(data.qualified_opportunity, 600)}`,
+    data.why_you && `Why we win: ${clean(data.why_you, 600)}`,
+    data.monthly_budget && `Monthly budget: ${clean(data.monthly_budget, 40)}`,
+    data.exclusive_ok && `Exclusive 6-12 months: ${clean(data.exclusive_ok, 60)}`,
   ].filter(Boolean).join(' | ');
   return {
     email: clean(data.email, 200).toLowerCase(),
@@ -92,7 +106,7 @@ function buildPayload(data, formName) {
     role: clean(data.role, 60),
     phone: clean(data.phone, 40),
     website: clean(data.website, 200),
-    state: clean(data.state, 20),
+    state: clean(Array.isArray(data.states) ? data.states.join(', ') : (data.states || data.state), 40),
     vertical: clean(data.category, 100),
     title: `Website enquiry: ${clean(data.business, 120) || clean(data.name, 120)}`,
     message,

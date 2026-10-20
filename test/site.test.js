@@ -80,7 +80,7 @@ test('one primary CTA label sitewide; /apply is the CTA in header and hero; book
 });
 
 test('forms: short essentials, optional extras, collection notice, hidden attribution and time-trap fields', () => {
-  for (const f of ['apply.html', ...pages.filter((p) => p.startsWith('lp/'))]) {
+  for (const f of pages.filter((p) => p.startsWith('lp/'))) {
     const form = /<form[\s\S]*?<\/form>/.exec(rd(f))[0];
     const above = form.split('<details')[0];
     for (const n of ['name', 'business', 'website', 'email', 'state', 'goal', 'phone']) assert.match(above, new RegExp(`name="${n}"`), `${f} ${n} above the fold`);
@@ -92,7 +92,14 @@ test('forms: short essentials, optional extras, collection notice, hidden attrib
     assert.match(form, /name="form_ts"/); assert.match(form, /name="bot-field"/);
     assert.match(form, /action="\/thanks\.html"/); assert.match(form, /data-error=/);
   }
-  assert.match(rd('apply.html'), /name="role"/); assert.match(rd('apply.html'), /<form name="apply"/);
+  const ap = /<form[\s\S]*?<\/form>/.exec(rd('apply.html'))[0];
+  assert.match(ap, /<form name="apply"/);
+  // the commercial qualification: every one of these must be asked, and all but phone and close rate are required
+  for (const n of ['name', 'role', 'business', 'website', 'email', 'goal', 'target_market', 'category', 'states', 'avg_sale', 'gross_margin', 'customer_value', 'sales_cycle', 'salespeople', 'conversion', 'response_speed', 'growth_goal', 'constraint', 'qualified_opportunity', 'why_you', 'monthly_budget', 'exclusive_ok', 'consent']) assert.match(ap, new RegExp(`name="${n}"`), `apply asks ${n}`);
+  for (const n of ['avg_sale', 'gross_margin', 'customer_value', 'sales_cycle', 'monthly_budget', 'exclusive_ok', 'qualified_opportunity', 'why_you', 'target_market']) assert.match(ap, new RegExp(`name="${n}"[^>]*required`), `apply requires ${n}`);
+  assert.match(ap, /name="phone"(?![^>]*required)/); assert.match(ap, /data-require-one/);
+  assert.match(ap, /name="form_ts"/); assert.match(ap, /name="bot-field"/); assert.match(ap, /Collection notice/); assert.match(ap, /name="consent"[^>]*required/);
+  assert.match(rd('apply.html'), /Fewer partners\.[\s\S]*Better opportunities\.[\s\S]*Deeper partnerships\./);
   assert.match(rd('lp/b2b-services/index.html'), /<form name="lp-enquiry"/);
 });
 

@@ -20,6 +20,18 @@
         el.addEventListener('input', function () { el.setCustomValidity(''); });
         el.addEventListener('change', function () { el.setCustomValidity(''); });
       });
+      // groups of checkboxes where at least one must be ticked
+      var groups = form.querySelectorAll('[data-require-one]');
+      form.addEventListener('submit', function (e) {
+        Array.prototype.forEach.call(groups, function (g) {
+          var old = g.querySelector('.fe'); if (old) old.remove();
+          if (!g.querySelector('input:checked')) {
+            e.preventDefault();
+            var p = document.createElement('p'); p.className = 'fe'; p.setAttribute('role', 'alert'); p.textContent = g.getAttribute('data-error');
+            g.appendChild(p); g.scrollIntoView({ block: 'center' });
+          }
+        });
+      });
     });
   });
 })();

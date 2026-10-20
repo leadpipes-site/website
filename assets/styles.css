@@ -245,3 +245,33 @@ footer .legal{color:#8fa7b8}
 .review2 li b{color:#fff}
 .review2 .r-foot{margin:22px 0 0;font-weight:700;color:var(--gold)}
 @media (max-width:860px){.review2{padding:24px 20px}.review2 .r-grid{grid-template-columns:1fr}.review2 .r-lead{font-size:16px}}
+
+/* apply page */
+.apply-hero .wrap{max-width:960px}
+.apply-hero h1{margin-bottom:18px}
+.model-line{font:900 clamp(24px,3.6vw,44px)/1.08 "Arial Black",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.02em;color:#fff;margin:0 0 22px;padding-left:18px;border-left:4px solid var(--gold)}
+.model-line .accent{color:var(--gold)}
+.sport-line{margin:22px 0;padding:0 0 0 18px;border-left:3px solid var(--teal);font-size:19px;line-height:1.45;color:#e8eef3;font-style:italic;max-width:720px}
+.apply-body{padding-top:48px}
+.wide-form{max-width:960px;margin:0 auto;padding:36px}
+.why-box{background:#f2f7f8;border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;padding:16px 18px;font-size:15px;line-height:1.55;margin:0 0 22px;color:var(--ink)}
+.apply-form{gap:22px}
+fieldset.sec{border:1px solid var(--line);border-radius:14px;padding:22px 22px 24px;margin:0;display:grid;gap:14px;min-width:0}
+fieldset.sec>legend{padding:0 10px;font:900 15px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--navy3)}
+fieldset.sec>legend b{display:inline-block;margin-right:10px;color:var(--gold-d,#b9852a);font-size:15px}
+.sec-intro{margin:-4px 0 4px;color:var(--muted);font-size:14px;line-height:1.5}
+.apply-form fieldset.checks{border:0;padding:0;margin:0;display:grid;gap:10px;min-width:0}
+.apply-form fieldset.checks>legend{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy3);padding:0;margin-bottom:8px}
+.req{text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)}
+.check-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.check-grid label.check{border:1px solid #cfdbe1;border-radius:10px;padding:12px;align-items:center;color:var(--ink);font-size:14px;font-weight:700;margin:0}
+.fe{color:#b3261e;font-size:13px;margin:4px 0 0}
+@media (max-width:860px){.wide-form{padding:22px 16px}fieldset.sec{padding:18px 14px 20px}.check-grid{grid-template-columns:repeat(3,1fr)}.sport-line{font-size:17px}}
+.apply-form fieldset.checks{grid-template-columns:1fr}
+.check-grid{width:100%}
+label .opt,label .req{display:inline}
+.apply-form label.check input{padding:0}
+.check-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.check-grid label.check{min-width:0}
+@media (max-width:860px){.check-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.check-grid label.check{padding:11px 8px;gap:8px;font-size:13px}.check-grid label.check input{width:18px;height:18px}}
+@media (max-width:860px){.check-grid label.check:last-child{grid-column:1/-1}}

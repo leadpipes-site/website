@@ -22,7 +22,7 @@ for (const f of pages) {
   for (const fm of h.matchAll(/<form[\s\S]*?<\/form>/g)) {
     const form = fm[0];
     if (!/data-netlify="true"/.test(form) || !/data-lead-form/.test(form)) bad(f, 'form missing data-netlify or data-lead-form');
-    for (const n of NEED) if (!new RegExp(`name="${n}"`).test(form)) bad(f, `form missing field ${n}`);
+    for (const n of (f.endsWith('apply.html') ? NEED.filter((x) => x !== 'state') : NEED)) if (!new RegExp(`name="${n}"`).test(form)) bad(f, `form missing field ${n}`);
     if ((form.match(/required/g) || []).length < 6) bad(f, 'form required fields missing');
   }
 }
