@@ -230,3 +230,18 @@ footer .legal{color:#8fa7b8}
 
 /* two-line buttons on narrow phones */
 @media (max-width:420px){.btn{line-height:1.35;padding-top:15px;padding-bottom:15px}}
+
+/* 10-week review */
+.review2{margin-top:34px;padding:34px 32px;border:1px solid rgba(216,161,59,.55);border-radius:16px;background:rgba(216,161,59,.05)}
+.review2 .eyebrow{color:var(--gold)}
+.review2 h3{font:900 clamp(24px,3vw,36px)/1.05 "Arial Black",Arial,sans-serif;text-transform:uppercase;letter-spacing:-.02em;color:#fff;margin:6px 0 14px}
+.review2 .r-lead{max-width:760px;color:#d5dfe7;font-size:17px;margin:0 0 24px}
+.review2 .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review2 .r-grid>div{background:var(--navy2);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px 22px}
+.review2 small{display:block;font:900 12px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.review2 ul{list-style:none;margin:0;padding:0}
+.review2 li{padding:8px 0;border-top:1px solid rgba(255,255,255,.08);color:#d5dfe7;font-size:15px;line-height:1.4}
+.review2 li:first-child{border-top:0}
+.review2 li b{color:#fff}
+.review2 .r-foot{margin:22px 0 0;font-weight:700;color:var(--gold)}
+@media (max-width:860px){.review2{padding:24px 20px}.review2 .r-grid{grid-template-columns:1fr}.review2 .r-lead{font-size:16px}}
