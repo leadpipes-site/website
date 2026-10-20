@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict';
+const ASSET_V = require('node:crypto').createHash('md5').update(require('node:fs').readFileSync(require('node:path').join(__dirname,'assets','styles.css'))).update(require('node:fs').readFileSync(require('node:path').join(__dirname,'assets','form.js'))).digest('hex').slice(0,8);
 /*
  * Tiny static site builder. No dependencies.
  *   node build.js
@@ -64,7 +65,7 @@ const crumbLd = (items) => ({
 const sitemap = [];
 function page({ file, title, description, canonicalPath, robots = 'index,follow', content, ld = [] }) {
   const clean = content.replace(/<!--[\s\S]*?-->\n?/g, '');
-  const html = fill(layout, { title: esc(title), description: esc(description), robots, canonical: SITE + canonicalPath, ogimage: OG_IMAGE, jsonld: ld.map(ldScript).join(''), header, footer, content: clean });
+  const html = fill(layout, { title: esc(title), description: esc(description), robots, canonical: SITE + canonicalPath, ogimage: OG_IMAGE, av: ASSET_V, jsonld: ld.map(ldScript).join(''), header, footer, content: clean });
   write(file, html);
   if (robots.startsWith('index')) sitemap.push(canonicalPath);
 }

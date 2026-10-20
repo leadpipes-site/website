@@ -11,7 +11,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Arial,Helvetica,sans-serif}
 img,svg{max-width:100%}
 a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1260px;margin:0 auto;padding:0 20px}
 .narrow{max-width:760px}
 .skip{position:absolute;left:-9999px;top:8px;background:var(--gold);color:var(--navy);padding:10px 14px;z-index:100;font-weight:700}
 .skip:focus{left:8px}
@@ -292,3 +292,6 @@ label .opt,label .req{display:inline}
 .yellow .box p,.yellow .pillar p,.yellow .box li{color:var(--ink)}
 .yellow .box h3{color:var(--navy3)}
 .yellow .define a,.yellow .box a{color:var(--teal-d)}
+
+.yellow .muted,.yellow .lead{color:#0e2231}.yellow .pillar,.yellow .card,.yellow .step{background:#fff}.yellow .pillar *,.yellow .card *{color:var(--ink)}.yellow .pillar h3,.yellow .card h3{color:var(--navy3)}
+.review2{padding:40px 44px}.review2 .r-lead{max-width:none}
