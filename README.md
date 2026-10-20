@@ -54,6 +54,5 @@ Edit `src/` and `data/`, never the generated HTML. Node 20 or newer; no dependen
 - [ ] Fill in `data/site.json` (entity name, ABN, retention period, optional postal address). `node build.js` lists what is still missing.
 - [ ] Privacy policy reviewed by a lawyer (it has NOT been reviewed yet; see CHANGES.md for the items to ask about). Spam Act wording on the consent tick box confirmed.
 - [ ] You are comfortable with every claim: "We do not guarantee sales", "Territory protected", "Human quality control", "Every 10 weeks" review, the Darren bio line.
-- [ ] Solar landing page reviewed for any conflict with SolarPipe before you send traffic to it.
 - [ ] No client names, results or testimonials are used anywhere without written permission (none are in the site now).
 - [ ] Form notifications switched on in Netlify, test enquiry sent.

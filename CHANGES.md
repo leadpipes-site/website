@@ -6,7 +6,7 @@ Source of the work: independent website review (review-6) and the Australian com
 
 1. **Privacy policy rewritten** (`src/pages/privacy.html`). Covers who we are, what is collected (forms, Calendly bookings, no cookies, first-party attribution, form timing), business contact details collected for outreach, purposes, honest disclosure of lead and contact details to the client who engages LeadPipes, named service providers (Netlify, Google Workspace, Calendly, Railway), overseas disclosure, security, retention, access/correction/removal/unsubscribe, complaints (OAIC, ACMA). The false "we do not sell or share your details" line is gone (policy and forms). The date is fixed at 16/10/2026 in `data/site.json`, not regenerated per build. A collection notice linking to the policy is on every form. Privacy contact is `enquiries@leadpipes.com.au`, used in the footer too.
 2. **Consumer-outreach risk.** Kitchens/bathrooms/renovations page rewritten as clearly B2B ("we do not cold-contact homeowners"; opportunities described only as inbound/opt-in or published business details). It is noindex, out of the sitemap, and not linked from the home page or footer until legal review.
-3. **Solar page.** "One installer per state" and "Protected state" removed. Exclusivity is stated as agreed per category, state and client. A disclosure line says Darren also operates SolarPipe (see decisions).
+3. **Solar page.** "One installer per state" and "Protected state" removed. Exclusivity is stated as agreed per category, state and client.
 4. **Apply form shortened.** Above the fold: name, business, work email, website, category, state, what you want, optional phone. Role, team size, years trading, marketing spend, leads wanted, sources, call window and average sale moved into a "Tell us more (optional)" disclosure. All field names kept. Plain, specific error messages via `assets/form.js` (`data-error` attributes). Landing-page forms use the same short form.
 5. **Navigation and CTAs.** Header and hero primary CTA is "Book a discovery call" (`/book.html`); secondary is "Apply for a territory". Old labels removed everywhere (enforced by a test). Header also links How it works and FAQ. Tags are carried onto `/book` links as well as `/apply`.
 6. **Proof without fabrication.** New `/how-it-works.html`: illustrative sample lead pack (clearly labelled fake, six handover items) and "How we measure" (targets: acceptance 80%+, first-response SLA 90%+, replacement under 10%, each with how it is measured, stated as targets not results). New `/faq.html` with 10 questions (`data/faq.json`). No testimonials, logos, prices or results.
@@ -39,11 +39,9 @@ These placeholders appear only on `/privacy.html`; no other indexable page shows
 - The consent tick box wording (required, scoped to this enquiry and the discovery call, covers phone/SMS), the FAQ's Spam Act answer, and the B2B-only outreach wording.
 - The kitchens/bathrooms/renovations page before it is indexed or linked, and whether that vertical should exist at all (review-3 C-3).
 - ACL review of claims: "reviewed before handover", "exclusive", the 10-week review, replacement wording.
-- Conflict of interest between LeadPipes and SolarPipe.
 
 ## Needs Darren's decision
 
-- Keep or remove the SolarPipe disclosure on the solar page (`disclosure` in `data/landing-pages.json`). It states only that you also operate SolarPipe, separately.
 - Confirm these are operationally true: "Reviewed before handover" (replaced "Human quality control"), "Every 10 weeks" review, "agreed in writing" criteria and exclusivity, replacement of non-qualifying leads (FAQ), "first contact within the response time we agree with you".
 - I softened "No recycled contacts" (removed) and "Territory protected" (now "Exclusive per category and state") because review-3 M-4 says they cannot yet be guaranteed. Restore only if provable.
 - Website is a required field on the form (type "none" if no site). Make it optional if conversion matters more than the data.
