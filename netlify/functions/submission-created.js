@@ -17,7 +17,7 @@ const ATTRIBUTION_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_conte
 // Spam checks (no third-party services). A rejected submission is still kept in Netlify Forms; it is only not forwarded to LeadDrive.
 const MIN_FILL_MS = 2000; // a person cannot read and complete a form this fast, even with autofill
 const URL_RE = /(?:https?:\/\/|www\.)/gi;
-const FREE_TEXT = ['goal', 'name', 'business', 'target_market', 'why_you', 'qualified_opportunity'];
+const FREE_TEXT = ['success_12m', 'goal', 'name', 'business', 'target_market', 'why_you', 'qualified_opportunity'];
 
 const clean = (v, max = 300) => String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
 
@@ -96,6 +96,8 @@ function buildPayload(data, formName) {
     data.constraint && `Constraint: ${clean(data.constraint, 400)}`,
     data.qualified_opportunity && `Qualified opportunity: ${clean(data.qualified_opportunity, 600)}`,
     data.why_you && `Why we win: ${clean(data.why_you, 600)}`,
+    data.success_12m && `12-month success: ${clean(data.success_12m, 600)}`,
+    data.followup_owner && `Follow-up owner: ${clean(data.followup_owner, 120)}`,
     data.monthly_budget && `Monthly budget: ${clean(data.monthly_budget, 40)}`,
     data.exclusive_ok && `Exclusive 6-12 months: ${clean(data.exclusive_ok, 60)}`,
   ].filter(Boolean).join(' | ');

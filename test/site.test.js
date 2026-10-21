@@ -66,17 +66,17 @@ test('JSON-LD is valid; FAQPage matches the visible FAQ; Organization and WebSit
 });
 
 test('one primary CTA label sitewide; /apply is the CTA in header and hero; booking is by invitation only', () => {
-  const banned = /Check availability|Check my state|Talk to Darren|Apply for exclusivity|Request category availability|Request availability|Book a discovery call|Apply for a territory|take the territory/i;
+  const banned = /Check availability|Check my state|Talk to Darren|Apply for exclusivity|Request category availability|Request availability|Book a discovery call|Apply to work with Darren|take the territory/i;
   for (const f of pages) {
     const h = rd(f); assert.doesNotMatch(h, banned, f);
     for (const m of h.matchAll(/<a class="(?:btn(?: ghost| ghost-dark)?|pill)"[^>]*>([^<]+)/g)) {
       const label = m[1].trim();
-      assert.ok(['Apply to work with Darren', 'Apply', 'How selection works', 'Back to LeadPipes', 'Read the FAQ', 'Go to the home page'].includes(label), `${f}: unexpected CTA label "${label}"`);
+      assert.ok(['Apply for a territory', 'Apply', 'See a sample handover', 'How selection works', 'Back to LeadPipes', 'Read the FAQ', 'Go to the home page'].includes(label), `${f}: unexpected CTA label "${label}"`);
     }
   }
   const home = rd('index.html');
   assert.match(home, /class="pill" href="\/apply\.html">Apply/);
-  assert.match(/<section class="hero">[\s\S]*?<\/section>/.exec(home)[0], /class="btn" href="\/apply\.html">Apply to work with Darren/);
+  assert.match(/<section class="hero">[\s\S]*?<\/section>/.exec(home)[0], /class="btn" href="\/apply\.html">Apply for a territory/);
 });
 
 test('forms: short essentials, optional extras, collection notice, hidden attribution and time-trap fields', () => {

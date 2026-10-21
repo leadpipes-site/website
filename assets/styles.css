@@ -316,3 +316,9 @@ footer a.soc:hover,footer a.soc:focus-visible{transform:translateY(-3px);box-sha
 footer a.soc.facebook{background:#1877f2}
 footer a.soc.instagram{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
 footer a.soc.linkedin{background:#0a66c2}
+
+/* v2 review additions */
+.hero-sub{font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:.02em;margin:0 0 18px}
+.fit.own{margin-top:28px}
+.fit.own .box ul{display:flex;flex-wrap:wrap;gap:8px 22px}
+.fit.own .box li{border-top:0;padding:4px 0 4px 26px}
