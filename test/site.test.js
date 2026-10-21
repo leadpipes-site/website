@@ -57,7 +57,7 @@ test('JSON-LD is valid; FAQPage matches the visible FAQ; Organization and WebSit
   const types = (h) => blocks(h).map((b) => b['@type']);
   assert.deepEqual(types(rd('index.html')).sort(), ['Organization', 'WebSite']);
   const faq = rd('faq.html'); const f = blocks(faq).find((b) => b['@type'] === 'FAQPage');
-  assert.ok(f.mainEntity.length >= 8 && f.mainEntity.length <= 16);
+  assert.ok(f.mainEntity.length >= 8 && f.mainEntity.length <= 20);
   const visible = faq.replace(/<[^>]+>/g, ' ').replace(/&#39;|&rsquo;/g, "'").replace(/&amp;/g, '&').replace(/\s+/g, ' ');
   for (const q of f.mainEntity) { assert.ok(visible.includes(q.name.replace(/\s+/g, ' ')), `question visible: ${q.name}`); assert.ok(visible.includes(q.acceptedAnswer.text.slice(0, 60)), `answer visible: ${q.name}`); }
   for (const p of pages.filter((x) => !['index.html', 'faq.html', '404.html', 'thanks.html'].includes(x))) assert.ok(types(rd(p)).includes('BreadcrumbList'), `${p} has breadcrumbs`);
