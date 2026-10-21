@@ -322,3 +322,24 @@ footer a.soc.linkedin{background:#0a66c2}
 .fit.own{margin-top:28px}
 .fit.own .box ul{display:flex;flex-wrap:wrap;gap:8px 22px}
 .fit.own .box li{border-top:0;padding:4px 0 4px 26px}
+
+/* light-section tables */
+.white table.gates,.on-light table.gates{color:var(--ink)}
+.white table.gates th,.white table.gates td,.on-light table.gates th,.on-light table.gates td{border-top-color:var(--line)}
+.white table.gates thead th,.on-light table.gates thead th{color:#3d5568}
+.white table.gates td:nth-child(2),.on-light table.gates td:nth-child(2){color:var(--teal-d)}
+.white .lead,.on-light .lead{color:var(--ink)}
+/* mobile: stack tables, bigger tap targets */
+@media (max-width:640px){
+  .table-wrap{overflow:visible}
+  table.gates{min-width:0;display:block}
+  table.gates thead{position:absolute;left:-9999px}
+  table.gates tbody,table.gates tr,table.gates th,table.gates td{display:block;width:auto}
+  table.gates tr{padding:14px 0;border-top:1px solid rgba(255,255,255,.18)}
+  .white table.gates tr{border-top-color:var(--line)}
+  table.gates th,table.gates td{border-top:0!important;padding:3px 0}
+  table.gates tbody th{white-space:normal;font-size:17px}
+  table.gates td:nth-child(2){white-space:normal}
+  table.gates td:nth-child(3){font-size:15px;opacity:.9;padding-top:6px}
+}
+.logo{min-height:44px;display:inline-flex;align-items:center}
